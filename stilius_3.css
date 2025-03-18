@@ -1,0 +1,49 @@
+body {
+
+    background-color: rgb(230, 230, 223);
+
+}
+
+.antraste {
+
+    color: white;
+    
+    background-color: black;
+
+}
+
+strong {
+
+    font-size: 20px;
+
+}
+
+em {
+
+    color: white;
+
+    background-color: black;
+
+}
+
+div {
+
+    background-color: rgb(129, 163, 235);
+
+}
+
+h3 {
+
+    color: white;
+
+    background-color: grey;
+
+}
+
+.lentele {
+
+    color: white;
+
+    background-color: black;
+
+}
