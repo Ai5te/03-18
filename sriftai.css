@@ -1,0 +1,68 @@
+th {
+
+    text-transform: uppercase;
+
+    font-family: "Mukta", sans-serif;
+
+    font-weight: 400;
+
+
+}
+
+td{
+
+    font-family: "Noto Sans", sans-serif;
+
+    font-weight: 300;
+}
+
+th, td {
+
+    text-align: center;
+
+}
+
+a {
+
+    color: rgb(41, 120, 255);
+
+}
+
+.unpaid {
+
+color: rgb(198, 45, 62);
+line-height: 30px;
+
+}
+
+.red {
+
+background-color: rgb(255, 205, 210);
+
+}
+
+.paid {
+
+    color: rgb(56, 144, 69);
+    line-height: 30px;
+
+}
+
+.green {
+
+    background-color: rgb(200, 230, 201);
+
+}
+
+.pending {
+
+    color: rgb(197, 152, 0);
+    line-height: 30px;
+
+}
+
+.yellow {
+
+    background-color: rgb(255, 240, 194);
+
+}
