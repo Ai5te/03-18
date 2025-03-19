@@ -1,0 +1,65 @@
+body {
+
+    background-color: aqua;
+     
+    margin-top: 64px;
+    margin-left: 708px;
+    padding: 8px;
+
+}
+
+h2 {
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+
+}
+
+p {
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    width: 408px;
+    height: 135px;
+}
+
+div {
+
+    background-color: white;
+
+    text-align: center;
+
+    width: 488px;
+    height: 314px;
+    padding: 50px 40px 30px 40px;
+
+    margin-bottom: 16px;
+
+
+}
+
+.placiau {
+
+    width: 41px;
+    height: 15px;
+
+}
+
+.box3 {
+
+    width: 73px;
+    height: 20px;
+    background-color: #FCCB92;
+    margin: auto;
+    padding: 8px 16px 8px 16px;
+    
+}
+
+a {
+
+    text-decoration: none;
+
+}
+
