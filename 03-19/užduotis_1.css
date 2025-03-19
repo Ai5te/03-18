@@ -1,0 +1,86 @@
+body {
+
+    background-color: #EBEBEB;
+
+}
+
+div {
+
+    width: 1000px;
+    height: 998px;
+
+    background-color: white;
+
+}
+
+h1, h2, h3 {
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+}
+
+h1 {
+
+    text-transform: uppercase;
+    font-size: 50px;
+
+}
+
+h2 {
+
+    font-size: 36px;
+
+}
+
+h3 {
+
+    font-size: 20px;
+    text-decoration: underline;
+    text-decoration-thickness:0%;
+
+}
+
+p {
+
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+
+}
+
+.dezute1 {
+
+    width: 974px;
+    height: 59px;
+
+    margin-top: 10px;
+    margin-left: 13px;
+
+}
+
+.dezute2 {
+
+    width: 974px;
+    height: 500px;
+
+    margin-top: 10px;
+    margin-left: 13px;
+
+}
+
+.dezute3 {
+    
+    width: 974px;
+    height: 267px;
+
+    margin-top: 10px;
+    margin-left: 13px;
+    margin-bottom: 10px;
+
+}
+
+.img {
+
+    object-fit:cover ;
+
+}
