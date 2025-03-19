@@ -1,6 +1,6 @@
 body {
 
-    background-color: grey;
+    background-color: rgb(41, 45, 51);
 
     color: white;
 
@@ -8,17 +8,18 @@ body {
 
 table {
 
-    border: 1px solid white;
+    border: 1px solid rgb(85, 92, 102);
 
 }
 
 th, td {
 
-    border: 1px solid white;
+    border: 1px solid rgb(85, 92, 102);
+
 
 }
 
-.lygiuote {
+.lygiuote, h1 {
 
     text-align: center;
 
@@ -26,6 +27,87 @@ th, td {
 
 th {
 
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+}
 
+td{
+
+    height: 40px;
+    font-family: "Open Sans", sans-serif;
+
+}
+
+.plans {
+
+    color: black;
+    background-color: white;
+    height: 50px;
+    width: 250px;
+    text-align: left;
+
+}
+
+.starter {
+
+    background-color: rgb(255, 157, 0);
+    width: 200px;
+
+}
+
+.advance {
+
+    background-color: rgb(236, 61, 69);
+    width: 200px;
+
+}
+
+.enterprise {
+
+    background-color: rgb(8, 185, 202);
+    width: 200px;
+
+}
+
+.price1 {
+
+    color: rgb(255, 157, 0);
+    font-size: 30px;
+
+}
+
+.price2 {
+
+    color: rgb(236, 61, 69);
+    font-size: 30px;
+
+}
+
+
+.price3 {
+
+    color: rgb(8, 185, 202);
+    font-size: 30px;
+
+}
+
+img {
+
+    width: 20px;
+    height: 20px;
+}
+
+div {
+
+    background-color: rgb(236, 61, 69);
+    width: 90px;
+    height: 20px;
+    margin: auto;
+    font-size: 12px;
+}
+
+h1 {
+
+    font-size: 40px;
 
 }
