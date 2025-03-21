@@ -1,0 +1,160 @@
+.container {
+
+    font-family: "Roboto", sans-serif;
+
+}
+
+.theme {
+
+    background-image: url(plane.jpg);
+    height: 513px;
+    background-repeat: no-repeat;
+}
+
+.pav {
+
+    font-weight: 700;
+    font-size: 200px;
+    text-transform: uppercase;
+    width: 835px;
+    color: white;
+    text-shadow: 0px 5px 5px #0000005E;
+}
+
+h2 {
+
+    font-weight: 700;
+    font-size: 64px;
+    width: 905px;
+    color: #073590;
+
+}
+
+h3 {
+
+    font-weight: 400;
+    font-size: 20px;
+    width: 371px;
+    color: #807D7D;
+
+}
+
+.zenklas {
+
+    background-image: url(Union.png);
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 16px;
+}
+
+.click {
+
+    font-weight: 400;
+    font-size: 14px;
+    width: 1504px;
+    padding-left: 26px ;
+ 
+}
+
+.dezute {
+
+    height: 54px;
+    border-radius:2px;
+    border: 1px solid #91D5FF;
+    padding: 16px;
+    margin-bottom: 40px;
+   
+}
+
+.box {
+
+    /* background-color: #F5F5F5; */
+    background-color: #073590;
+    height: 1799px;
+    border-radius: 10px;
+    padding: 80px 300px 80px 300px;
+    
+}
+
+.box1 {
+
+    background-color: #E0F0FC;
+    width: 644px;
+    height:525px;
+    border-radius: 24px;
+    padding: 24px 24px 36px 24px;
+    margin-bottom: 32px
+}
+
+img {
+
+    width: 596px;
+    height: 226px;
+    border-radius: 15px;
+    object-fit: cover;
+
+}
+
+h4 {
+
+    font-weight: 700;
+    font-size: 48px;
+    width: 165px;
+
+}
+
+h5 {
+
+    font-weight: 700;
+    font-size: 24px;
+    width: 210px;
+
+}
+
+p {
+
+    font-weight: 400;
+    font-size: 18px;
+    color: #807D7D;
+    width: 294px;
+
+}
+
+a {
+
+    font-weight: 700;
+    font-size: 18px;
+    width: 170px;
+    text-decoration: none;
+    color: white;
+
+}
+
+.button {
+
+    background: rgb(7,53,144);
+    background: linear-gradient(90deg, rgba(7,53,144,1) 0%, rgba(61,123,245,1) 100%);
+    width: 234px;
+    border-radius: 8px;
+    padding: 16px 32px 16px 32px;
+
+}
+
+.container {
+
+    width: 1564px;
+    height: 2047px;
+    margin-top: 0;
+    margin-left: 178px;
+    margin-bottom: 40px;
+
+}
+
+.info {
+
+    width: 294px;
+    line-height: 0;
+
+}
