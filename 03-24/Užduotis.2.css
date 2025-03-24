@@ -1,0 +1,79 @@
+body {
+
+    background-color: rgb(25, 33, 35);
+
+}
+
+.container {
+
+    font-size: 50px;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+}
+
+.big-box {
+
+    color: rgb(25, 33, 35);
+    display: flex;
+
+    justify-content: center;
+
+}
+
+.small-box {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.box1, .box1-1 {
+
+    background-color: rgb(180, 233, 0);
+
+}
+
+.box2, .box3 {
+
+    background-color: rgb(75, 86, 89);
+
+}
+
+.box1-2, .box1-3 {
+
+    background-color: rgb(149, 165, 166);
+
+}
+
+.box1, .box2, .box3 {
+
+    width: 150px;
+    height: 150px;
+    margin-top: 50px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 0;
+    line-height: .6; 
+    padding-left: 10px;
+
+}
+
+.box1-1, .box1-2, .box1-3 {
+
+    width: 10px;
+    height: 10px;
+
+    margin-left: 5px;
+    margin-right: 5px
+
+}
+
+.box1-3 {
+
+    margin-right: 40px;
+
+}
