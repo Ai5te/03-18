@@ -1,0 +1,74 @@
+body {
+
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: rgb(241, 241, 241);
+    
+}
+
+.container {
+
+    box-sizing: border-box;
+    justify-content: center;
+    max-width: 1100px;
+}
+
+.button {
+
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-left: 80px;
+    
+}
+
+.boxes {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    
+}
+
+.white {
+
+    background-color: white;
+    width: 80px;
+    text-align: center;
+    padding: 5px;
+
+}
+
+.grey {
+
+    background-color: rgb(108, 117, 125);
+    color: white;
+
+    width: 80px;
+    text-align: center;
+    padding: 5px;
+}
+
+img {
+
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+
+}
+
+.box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8 {
+
+    background-color: white;
+    
+    padding: 15px;
+}
+
+h4 {
+
+    font-weight: normal;
+
+}
+
+
