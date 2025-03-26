@@ -1,0 +1,207 @@
+* {
+
+    box-sizing: border-box;
+
+}
+
+body {
+
+    font-family: "Nunito Sans", sans-serif;
+    background-color: #f5f5f5;
+
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.box1 {
+
+    width: 458px;
+    height: 652px;
+    border-radius: 35px;
+    background-color: white;
+    margin-right: 25px;
+    margin-top: 100px;
+    
+    position: relative;
+}
+
+.box2 {
+
+    width: 955px;
+    height: 652px;
+    border-radius: 35px;
+    background-color: white;
+    margin-top: 100px;
+
+    position: relative;
+
+}
+
+img {
+
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    margin-left: 32px;
+    margin-top: 61px;
+
+}
+
+.name, .ceo, .number, .email {
+
+    font-weight: 600;
+    font-size: 32px;
+    color: #272727;
+
+}
+
+.name, .ceo {
+
+    padding-left: 50px;
+    padding-bottom: 10px;
+    margin: 0;
+    padding-top: 21px;
+}
+
+.number::before {
+
+    content: "Tel : ";
+
+}
+
+.email::before {
+
+    content: "Email: ";
+
+}
+
+.number, .email {
+
+    text-decoration: none;
+
+    padding-left: 98px;
+    padding-bottom: 75px;
+
+}
+
+.icon   {
+
+    font-size: 26px;
+    color: #231F20;
+
+}
+
+.bi-telephone-fill {
+
+    position: absolute;
+    top: 480px;
+    left: 54px;
+
+}
+
+.bi-envelope {
+
+    position: absolute;
+    top: 523px;
+    left: 54px;
+
+}
+
+.company-details {
+
+    font-weight: 600;
+    font-size: 36px;
+    color: #272727;
+
+    padding-left: 39px;
+    padding-top: 114px;
+
+}
+
+.web, .emp, .location, .note {
+
+    font-weight: 300;
+    font-size: 36px;
+    color: #272727;
+
+    padding-left: 139px;
+    margin: 0;
+
+}
+
+.web {
+
+    color: #418CFD;
+    text-decoration: none;
+
+    padding-top: 138px;
+
+}
+
+.note {
+
+        padding-right: 228px;
+}
+
+.emp::before {
+
+    content: "Employees : ";
+    font-weight: 600;
+
+}
+
+.location::before {
+
+    content: "Location : ";
+    font-weight: 600;
+
+}
+
+.note::before {
+
+    content: "Note : ";
+    font-weight: 600;
+
+}
+
+.bi-house-door-fill {
+
+    position: absolute;
+
+    top: 232px;
+    left: 96px;
+
+}
+
+.bi-people-fill {
+
+    position: absolute;
+
+    top: 280px;
+    left: 96px;
+
+}
+
+.bi-geo-alt {
+
+    position: absolute;
+
+    top: 330px;
+    left: 96px;
+
+}
+
