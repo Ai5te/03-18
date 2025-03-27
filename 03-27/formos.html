@@ -6,45 +6,58 @@
     <title>Document</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
 
         .container {
-
-            max-width: 425PX;
+            max-width: 425px;
             margin: 0 auto;
-
         }
 
         label {
-
-             
-
+            display: block;
+            padding: 5px 0;
         }
 
-        input {
-
+        /* Atributo selektorius žymimas [] */
+        /* input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="datetime-local"],
+        input[type="file"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
             width: 100%;
-            border: 1px solid red;
+            border: 1px solid rgb(209, 209, 209);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.187);
             padding: 10px 15px;
-            border-radius: 8px;
-        }
+            border-radius: 8px
+        } */
 
-        input [type="text"] {
-
+        input:not([type="checkbox"]),
+        select,
+        textarea {
             width: 100%;
-            border: 1px solid red;
+            border: 1px solid rgb(209, 209, 209);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.187);
             padding: 10px 15px;
-            border-radius: 8px;
+            border-radius: 8px
         }
 
         button {
-
-            background-color: rgb(132, 132, 230);
+            background-color: cyan;
             border: none;
-            padding: 15px 20p;
+            padding: 15px 20px;
             border-radius: 5px;
-
         }
-
+        
+        /* Norint stilizuoti tekstą patalpintą placeholder atribute */
+        input::placeholder {
+            color: red;
+        }
     </style>
 
 </head>
