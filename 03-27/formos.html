@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .container {
+
+            max-width: 425PX;
+            margin: 0 auto;
+
+        }
+
+        label {
+
+             
+
+        }
+
+        input {
+
+            width: 100%;
+            border: 1px solid red;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        input [type="text"] {
+
+            width: 100%;
+            border: 1px solid red;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        button {
+
+            background-color: rgb(132, 132, 230);
+            border: none;
+            padding: 15px 20p;
+            border-radius: 5px;
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+    
+    <!-- Formos elementas apgliaubia visus formos laukelius -->
+    <form> 
+        <!-- NOrint sukurti laukeli kuriame vartotojas galetu ivesti teksta -->
+        <!-- input laukelis yra  inline tipo elementas -->
+
+        <!-- <input type="text"> -->
+
+        <!-- norint pazymeti laukelio reiksme, naudojame label elementa -->
+
+        <label>Jusu vardas</label>
+        <input type="text">
+
+        <div>
+
+            <!-- required atributas nurodo, jog reiksme privalo buti ivesta i laukeli perduodant duomenis -->
+            <label>Jusu pavarde</label>
+            <input type="text" placeholder="Pavardenis" required>
+
+        </div>
+
+        <div>
+            <!-- Laukelis skirtas ivesti skaiciu -->
+
+            <label>Iveskite namo numeri</label>
+
+            <!-- Visi input elementai gali tureti value atributa -->
+            <input type="number" value="1">
+
+        </div>
+
+        <div>
+
+            <label>Jusu slaptazodis</label>
+            <input type="password">
+
+        </div>
+
+        <div>
+
+            <label>Gimimo data</label>
+            <input type="date">
+
+        </div>
+
+        <div>
+
+            <label>Planuojama vizito data ir laikas </label>
+            <input type="datetime-local">
+
+        </div>
+
+        <div>
+
+            <label>Ikelkite nuotrauka</label>
+            <input type="file">
+
+        </div>
+
+        <div>
+
+            <label>El.pasto adresas</label>
+            <input type="email" required>
+
+        </div>
+
+        <div>
+
+            <label>Telefono numeris</label>
+            <input type="tel" required>
+
+        </div>
+
+        <div>
+
+            <input type="checkbox" id="Sutikimas">
+            <label for="Sutikimas">Sutinku su vartojimo salygomis</label>
+
+        </div>
+
+        <div>
+
+            <!-- elementas skirtas ivesti teksta atskirose eilutese -->
+            <label>Komentaras</label>
+            <textarea></textarea>
+
+        </div>
+
+        <div>
+
+            <label>Pasirinkite tema</label>
+            <select>
+
+                <option value="">Saskaitos</option>
+                <option value="">Sutartys</option>
+                <option value="">Skundai</option>
+
+            </select>
+
+        </div>
+
+        <!-- mygtukas skirtas formos duomenis perduoti -->
+        <button>Siusti</button>
+
+    </form>
+
+    </div>
+    
+</body>
+</html>

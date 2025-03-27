@@ -1,0 +1,64 @@
+* {
+
+    box-sizing: border-box;
+
+}
+
+body {
+
+    margin: 0;
+    /* background-color: #f3f5f9; */
+    background-color: black;
+
+}
+
+.container {
+
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box1, .box2, .box3, .box4 {
+
+    width: 300px;
+    height: 400px;
+    background-color: #ffffff;
+
+    margin-top: 150px;
+    margin-right: 30px;
+
+    border-radius: 12px;
+
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; */
+
+}
+
+.box1 {
+
+    background-color: #ffd861;
+
+}
+
+.circle {
+
+    background-color: #ffeebb;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* position: relative; */
+
+    margin: 0 auto;
+    margin-top: 45px;
+}
+
+
