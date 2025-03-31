@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="Užduotis-1.2.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8 shadow p-3 mb-5 bg-body-tertiary rounded">
+
+                <div class="title mt-5 mb-3 ">
+                    <h1>Billing details</h1>
+                </div>
+                <form>
+                    <div class="name d-flex justify-content-between gap-3">
+                        <input class="padding p-1 mb-3" type="text" placeholder="First name">
+                        <input class="padding p-1 mb-3" type="text" placeholder="Last name">
+                    </div>
+                    <input class="padding p-1 mb-3" type="text" placeholder="Company name">
+                    <input class="padding p-1 mb-3" type="text" placeholder="Address">
+                    <input class="padding p-1 mb-3" type="email" placeholder="Email">
+                    <input class="padding p-1 mb-3" type="tel" placeholder="Phone">
+                    <textarea class="padding p-1 mb-3 form-control" placeholder="Additional information"></textarea>
+                    <div class="checkbox d-flex justify-content-center align-items-center">
+                        <input class="padding p-1 mb-3" type="checkbox" id="create">
+                        <label class="padding p-1 mb-3" for="create">Create an account?</label>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-3 ms-4 shadow p-3 mb-5 bg-body-tertiary rounded">
+
+                <div class="title mt-5 mb-4 ms-3">
+                    <h1>Summary</h1>
+                </div>
+                <div class="price d-flex justify-content-between align-items-center ms-3 pb-3">
+                    <span>Products</span>
+                    <span>$53.98</span>
+                </div>
+                <div class="shipping d-flex justify-content-between align-items-center ms-3 pb-4">
+                    <span>Shipping</span>
+                    <span>Gratis</span>
+                </div>
+                <div class="total d-flex justify-content-between align-items-center ms-3 pb-3">
+                    <strong>Total amount <br> (including VAT) </strong>
+                    <strong>$53.98</strong>
+                </div>
+
+                <form>
+                    <div class="button d-flex justify-content-center align-items-center ms-3 pb-3">
+                        <button class="btn btn-primary form-control py-2">MAKE PURCHASE</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
