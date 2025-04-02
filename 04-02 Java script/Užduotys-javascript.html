@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+         
+         function random(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+        }
+
+        // pirma uzduotis
+
+        let a = 8;
+        let b = 4;
+        let c = 2;
+        let d = 48;
+        let e = 3;
+        let f = 6;
+
+        let answer1 = a * b + c;
+        let answer2 = a * (b + c);
+        let answer3 = d / b;
+        let answer4 = e + f * c;
+
+        console.log(answer1);
+        console.log(answer2);
+        console.log(answer3);
+        console.log(answer4);
+
+        // antra uzduotis
+        
+        let skaicius1 = 10;
+        let skaicius2 = 8;
+        let skaicius3 = 10 + 8;
+
+        console.log(skaicius1);
+        console.log(skaicius2);
+        console.log(skaicius3);
+
+        // trecia uzduotis
+
+        let answer5 = skaicius3 + skaicius2
+        let answer6 = skaicius1 - skaicius2
+        let answer7 = skaicius2 * skaicius1
+        let answer8 = skaicius3 / skaicius2
+        
+        console.log(`${skaicius3} + ${skaicius2} = ${answer5}`);
+        console.log(`${skaicius1} - ${skaicius2} = ${answer6}`);
+        console.log(`${skaicius2} * ${skaicius1} = ${answer7}`);
+        console.log(`${skaicius3} / ${skaicius2} = ${answer8}`);
+
+        // ketvirta uzduotis
+        
+        let skaicius4 = 4;
+        let skaicius5 = 6;
+
+        let ats= 4**5;
+        let ats1= 12;
+
+        console.log(skaicius4);
+        console.log(`skaicius pakeltas penktuoju laipsniu: ${ats}`);
+        console.log(skaicius5);
+        console.log(`Skaiciuos padidintas du kartus: ${ats1}`);
+        
+        // Penkta uzduotis
+
+        let vardas = "Aiste";
+        let pavarde = "Grigaliunaite";
+        let gimmetai = 2003;
+        let metai = 2025;
+
+        let amzius = metai - gimmetai
+
+        console.log(`${vardas[0]}${vardas[2]} ${vardas[4]}${vardas[2]}${pavarde[7]} ${vardas} ${pavarde}. M${pavarde[4]}${pavarde[8]} y${pavarde[1]}${pavarde[4]} ${amzius} m${vardas[4]}${pavarde[11]}${pavarde[4]}${pavarde[2]}.`);
+        
+        // sesta uzduotis
+
+        let random1 = random (0, 4)
+        let random2 = random (0, 4)
+
+        console.log(random1);
+        console.log(random2);
+        console.log(random1 / random2);
+
+        // septinta uzduotis
+        
+        let random3 = random (0, 25)
+        let random4 = random (0, 25)
+        let random5 = random (0, 25)
+
+        console.log(random3);
+        console.log(random4);
+        console.log(random5);
+
+        // astunta uzduotis
+
+        let ran1 = random(0, 2)
+        let ran2 = random(0, 2)
+        let ran3 = random(0, 2)
+        let ran4 = random(0, 2)
+
+
+        // devinta uzduotis
+
+        let ran5 = random(-10, 10)
+        let ran6 = random(-10, 10)
+        let ran7 = random(-10, 10)
+
+        if(ran5< 0) {
+
+            console.log([ran5]);
+            
+        } else{
+
+            console.log({ran5});
+            
+        }
+
+        if(ran5 = 0){
+
+            console.log((ran5));
+
+        }
+
+        if(ran6< 0) {
+
+            console.log([ran6]);
+
+        } else{
+
+            console.log({ran6});
+
+        }
+
+        if(ran6 = 0){
+
+            console.log((ran6));
+
+        }
+
+        if(ran7< 0) {
+
+            console.log([ran7]);
+
+        } else{
+
+            console.log({ran7});
+
+        }
+
+        if(ran5 = 0){
+
+            console.log((ran7));
+
+        }
+
+        // desimta uzduotis
+
+        let zvakes = random(5, 3000);
+        let kaina = 1;
+        let nuolaida1 = 3;
+        let nuolaida2 = 4;
+        let suma = zvakes * kaina;
+        let nuolaida3 = nuolaida1 / 100;
+        let galutinesuma3 = suma - (suma * nuolaida3)
+        let nuolaida4 = nuolaida2 / 100;
+        let galutinesuma4 = suma - (suma * nuolaida4)
+
+        console.log(`Kiekis: ${zvakes}`);
+
+        if(zvakes > 2000){
+
+            console.log(`Galutine suma su 4% nuolaida: ${galutinesuma4}`);
+
+        } else if(zvakes > 1000) {
+
+            console.log(`Galutine suma su 3% nuolaida: ${galutinesuma3}`);
+
+        } else {
+
+            console.log(`Suma be nuolaidos: ${suma}`);
+
+        }
+
+        // vienuolikta uzduotis
+
+        let Random1 = random(0, 100);
+        let Random2 = random(0, 100);
+        let Random3 = random(0, 100);
+
+        let vidurkis = (Random1 + Random2 + Random3) / 3;
+
+        console.log(`Vidurkis: ${vidurkis.toFixed(0)}`);
+        
+
+        if(vidurkis>10){
+
+            console.log(`Vidurkis didesnis nei 10: ${vidurkis.toFixed(0)}`);
+            
+        } else if(vidurkis < 90) {
+
+            console.log(`Vidurkis mazesnis nei 90: ${vidurkis.toFixed(0)}`);
+
+        }
+
+
+    </script>
+
+</body>
+</html>
