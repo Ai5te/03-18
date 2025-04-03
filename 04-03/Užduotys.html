@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-03 užduotys</title>
+</head>
+<body>
+
+    <script>
+
+        function random(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+        }
+        
+        // Pirma
+        console.log("Pirma užduotis");
+
+        let aktoriusvardas = 'Vin'
+        let aktoriuspavarde = 'Diesel'
+
+        console.log(aktoriusvardas.length);        
+        console.log(aktoriuspavarde.length);
+
+        console.log(aktoriusvardas);
+        
+        // Antra
+        console.log("Antra užduotis");
+
+        vardas = "Vin";
+        pavarde = "Diesel";
+
+        console.log(vardas.toUpperCase());
+        console.log(pavarde.toLowerCase());
+
+        // Trecia
+        console.log("Trečia užduotis");
+
+        let pirmas = "Vin";
+        let antras = "Diesel";
+
+        trecias = "VD"
+
+        console.log(trecias);
+
+        // Ketvirta
+        console.log("Ketvirta užduotis");
+
+        let name = "Lily"
+        let surname = "Collins"
+        mix = "ilyins"
+
+        console.log(mix.toUpperCase());
+
+        // Penkta
+        console.log("Penkta užduotis");
+
+        let movie = 'An American in Paris'
+
+        console.log(movie.replaceAll("a", "*").replaceAll("A", "*"));
+        
+        // Šešta
+        console.log("Šešta užduotis");
+
+        let raidziusk = movie.split("a").length - 1 + movie.split("A").length - 1
+
+        console.log(raidziusk);
+
+        // Septinta
+        console.log("Septinta užduotis");
+        
+        let movie2 = "Breakfast at Tiffany's"
+        let movie3 = "2001: A Space Odyssey"
+        let movie4 = "It's a Wonderful Life"
+
+        console.log(movie.replaceAll("A", "").replaceAll("a", "").replaceAll("e", "").replaceAll("i", ""));
+
+        console.log(movie2.replaceAll("A", "").replaceAll("a", "").replaceAll("e", "").replaceAll("I", "")
+        .replaceAll("i", "").replaceAll("y", "").replaceAll("O", "").replaceAll("o", "").replaceAll("u", ""));
+
+        console.log(movie3.replaceAll("A", "").replaceAll("a", "").replaceAll("e", "").replaceAll("I", "")
+        .replaceAll("i", "").replaceAll("y", "").replaceAll("O", "").replaceAll("o", "").replaceAll("u", ""));
+
+        console.log(movie4.replaceAll("A", "").replaceAll("a", "").replaceAll("e", "").replaceAll("I", "")
+        .replaceAll("i", "").replaceAll("y", "").replaceAll("O", "").replaceAll("o", "").replaceAll("u", ""));
+
+        // Aštunta
+        console.log("Aštunta užduotis");
+
+        let starwars = `Star Wars: Episode ${random(0,5)} ${random(1,9)} - A New Hope`;
+
+        // Ieškome skaičių, esančių po "Episode" ir tarp pirmo tarpo
+        let episodeNumber = starwars.split(' ')[3]; // Epizodo numeris yra trečias žodis po "Episode"
+        let secondNumber = starwars.split(' ')[4]; // Antras skaičius po epizodo numerio
+
+        console.log(`Star Wars: Episode ${episodeNumber} ${secondNumber} - A New Hope`);
+        
+
+
+        // Devinta
+        console.log("Devinta užduotis");
+
+        letters = 'abcdefghijklmnopqrstuvwxyz';
+
+        let result = '';
+
+            // Pirmas simbolis
+            result += 'abcdefghijklmnopqrstuvwxyz'[random(0, 25)]; 
+
+            // Antras simbolis
+            result += 'abcdefghijklmnopqrstuvwxyz'[random(0, 25)];
+
+            // Trečias simbolis
+            result += 'abcdefghijklmnopqrstuvwxyz'[random(0, 25)];
+
+            console.log(`Atsitiktinis simbolis: ${result}`);
+        
+
+        // Dešimta
+        console.log("Dešimta užduotis");
+
+        let wordcount = "Don't Be a Menace to South Central While Drinking Your Juice in the Hood";
+        let count = wordcount.split(" ").length;
+
+        console.log(count); 
+        
+        // Papildoma
+        console.log("Papildoma užduotis");
+        
+        
+    </script>
+    
+</body>
+</html>

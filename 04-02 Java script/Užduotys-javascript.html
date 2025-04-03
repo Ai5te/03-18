@@ -59,10 +59,10 @@
         // ketvirta uzduotis
         
         let skaicius4 = 4;
-        let skaicius5 = 6;
+        let skaicius5 = 8;
 
         let ats= 4**5;
-        let ats1= 12;
+        let ats1= 8**2;
 
         console.log(skaicius4);
         console.log(`skaicius pakeltas penktuoju laipsniu: ${ats}`);
@@ -82,12 +82,28 @@
         
         // sesta uzduotis
 
-        let random1 = random (0, 4)
-        let random2 = random (0, 4)
+        pirmas = random(0, 4);
+        antras = random(0, 4);
 
-        console.log(random1);
-        console.log(random2);
-        console.log(random1 / random2);
+        console.log(pirmas, antras)
+
+        if(pirmas > antras) {
+            if(antras === 0) {
+                console.log('Dalyba iš nulio negalima');
+            } else {
+                console.log((pirmas / antras).toFixed(2));
+            }
+        } else {
+            if(pirmas === antras) {
+                console.log('Skaičiai yra lygūs');
+            } else {
+                if(pirmas === 0) {
+                    console.log(0);
+                } else {
+                    console.log((antras / pirmas).toFixed(2));
+                }
+            }
+        }
 
         // septinta uzduotis
         
