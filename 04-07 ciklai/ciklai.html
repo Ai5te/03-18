@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        function random(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+        }
+
+        console.log("Pirma užduotis");
+
+        let i = 0
+
+        while(i < 10){
+
+            console.log("labas");
+            
+            i++
+        }
+
+        console.log("Antra užduotis");
+
+        let x = 0; 
+
+        while(x < 10) {
+            
+            console.log(x);
+
+            x++;
+        }
+
+        console.log("Trečia užduotis");
+
+        let skaicius = 10
+
+        while(skaicius <= 50){
+
+            console.log(skaicius);
+            
+            skaicius += 2
+        }
+
+        console.log("Ketvirta užduotis");
+
+        skaicius = 10
+
+        while(skaicius <= 50){
+
+            if(skaicius % 2 === 0 && skaicius % 10 !== 0){
+
+                console.log(skaicius);
+                
+            }
+
+            skaicius ++
+        }
+
+        console.log("Penkta užduotis");
+
+        let poriniuSkaicius = 0;
+
+        for (let i = 0; i <= 20; i++) {
+            if (i % 2 === 0) {
+                poriniuSkaicius++;
+            }
+        }
+
+        console.log("Lyginių reikšmių skaičius:", poriniuSkaicius);
+
+        console.log("Šešta užduotis");
+
+        let didesniUz150 = 0;
+        i = 0;
+
+        let output = "";  // Sukuriame kintamąjį, kuriame saugosime visus skaičius
+
+        while (i < 300) {
+            let skaicius = random(0, 300);
+
+            // Jei skaičius didesnis už 275, atspausdiname su skliausteliuose
+            if (skaicius > 275) {
+                output += "[" + skaicius + "] ";  // Pridedame skaičių su skliausteliuose
+            } else {
+                output += skaicius + " ";  // Pridedame paprastą skaičių
+            }
+
+            // Suskaičiuojame, kiek skaičių yra didesnių už 150
+            if (skaicius > 150) {
+                didesniUz150++;
+            }
+
+            i++; // Padidiname skaitiklį
+        }
+
+        console.log(output);
+
+        console.log("Skaičių, didesnių už 150, kiekis:", didesniUz150);
+
+
+        console.log("Septinta užduotis");
+
+         let result = "";
+
+        for(i = 1; i <= 3000; i++) {
+            if (i % 77 === 0){
+
+                result += i;
+
+                if (i < 3000 - 77) {
+
+                result += ", ";
+
+                }
+
+            }
+            
+        }
+
+        console.log(result);
+
+        console.log("Aštunta užduotis");
+
+        let dydis = 25;
+        rezultatas = '';
+
+        for(let i = 1; i <= dydis * dydis; i++) {
+            if(i % dydis === 0) {
+                rezultatas += '*\n';
+            } else {
+                rezultatas += '* ';
+            }
+        }
+
+        console.log(rezultatas);
+
+        console.log("Devinta užduotis");
+
+        // dydis = 7;
+        // rezultatas = '';
+
+        // for(let i = 1; i <= dydis * dydis; i++) {
+        //     if(i % dydis === 0) {
+        //         rezultatas += '*\n';
+        //     } else {
+        //         rezultatas += '* ';
+        //     }
+        // }
+
+        // console.log(rezultatas);
+
+        // dydis = 7;
+        // rezultatas = '';
+
+        // for (let i = 0; i < dydis; i++) {
+        //     for (let j = 0; j < dydis; j++) {
+        //         if (i === j || j === dydis - i - 1) {
+        //             rezultatas += '5 ';
+        //         } else {
+        //             rezultatas += '* ';
+        //         }
+        //     }
+        //     rezultatas += '\n';
+        // }
+
+        // console.log(rezultatas);
+
+        dydis = 7;
+        rezultatas = '';
+
+        for(let i = 0; i < dydis; i++){
+
+            for(let x = 0; x < dydis; x++){
+                if(i === x || x === dydis - i - 1){
+                    rezultatas += '5 ';
+                }else {
+                    rezultatas += '* '
+                }
+            }
+            rezultatas += '\n'
+        }
+
+        console.log(rezultatas);
+
+        console.log("Dešimta užduotis");
+
+        let metimas = random(0, 1);
+        let veikia = true
+
+        veikia = true;
+
+        console.log("desimta uzduotis A");
+        
+
+        while (veikia) {
+            let metimas = random(0, 1);            
+
+            if (metimas === 1) {
+                console.log('S - Iškrito: Skaičius');
+            } else if(metimas === 0) {
+                console.log('H - Iškrito: Herbas');
+                console.log('Metimas sustabdytas (iškrito H)');
+                veikia = false;
+            }
+            
+        }
+
+        let herbuKiekis = 0;
+
+        console.log("Scenarijus B: Sustoti po 3 herbų (ne iš eilės)");
+
+        while (herbuKiekis < 3) {
+            let metimas = random(0, 1);
+
+            if (metimas === 1) {
+                console.log('S - Iškrito: Skaičius');
+            } else {
+                herbuKiekis++;
+                console.log(`H - Iškrito: Herbas (viso H: ${herbuKiekis})`);
+            }
+        }
+
+        console.log("Metimas sustabdytas (iškrito 3 herbai)");
+        let isEilesHerbai = 0;
+                console.log("Scenarijus C: Sustoti kai 3 herbai iš eilės");
+                while (isEilesHerbai < 3) {
+                    let metimas = random(0, 1);
+                    if (metimas === 1) {
+                        console.log('S - Iškrito: Skaičius');
+                        isEilesHerbai = 0; // reset if not H
+                    } else {
+                        isEilesHerbai++;
+                        console.log(`H - Iškrito: Herbas (iš eilės: ${isEilesHerbai})`);
+                    }
+        }
+
+        console.log("Metimas sustabdytas (3 herbai iš eilės)");
+
+        console.log("Vienuolikta užduotis");
+
+        let kazysTaskai = 0;
+        let petrasTaskai = 0;
+
+        while(kazysTaskai < 222 && petrasTaskai < 222) {
+
+            let kazys = random(5, 25);
+            let petras = random(10, 20);
+
+            kazysTaskai += kazys;
+            petrasTaskai += petras;
+
+            console.log(`Kazys surinko ${kazys} taškus, dabar turi ${kazysTaskai} taškų.`);
+            console.log(`Petras surinko ${petras} taškus, dabar turi ${petrasTaskai} taškų.`);
+        }
+
+        if (kazysTaskai >= 222) {
+            console.log(`Partiją laimėjo: Kazys su ${kazysTaskai} taškais!`);
+        } else if (petrasTaskai >= 222) {
+            console.log(`Partiją laimėjo: Petras su ${petrasTaskai} taškais!`);
+        }
+
+        console.log("Dvylikta užduotis");
+
+        let viniesIlgis = 85; 
+        let visoSmugiu = 0;
+
+        for (let v = 0; v < 5; v++) {
+            let ikalta = 0;
+            let smugiai = 0;
+
+            while (ikalta < viniesIlgis) {
+                let smugis = random(5, 20)
+                ikalta += smugis;
+                smugiai++;
+            }
+
+            console.log(`Vinį ${v + 1} įkalėm per ${smugiai} smūgius`);
+            visoSmugiu += smugiai;
+        }
+
+        console.log(`Iš viso prireikė ${visoSmugiu} mažų smūgių.`);
+        let visoDideliuSmugiu = 0;
+
+        for (let v = 0; v < 5; v++) {
+            let ikalta = 0;
+            let smugiai = 0;
+
+            while (ikalta < viniesIlgis) {
+                smugiai++;
+
+                let pataikei = random(1,2) 
+                if (pataikei === 1) {
+                    let smugis = random(20,30) 
+                    ikalta += smugis;
+                }
+            }
+
+            console.log(`Vinį #${v + 1} įkalėm per ${smugiai} smūgius (dideli smūgiai)`);
+            visoDideliuSmugiu += smugiai;
+        }
+
+            console.log(`Iš viso prireikė ${visoDideliuSmugiu} didelių smūgių.`);
+        
+        console.log("Ciklai #2");
+        console.log("Pirma užduotis");
+        
+        skaicius = 7;
+
+        while(skaicius <= 31){
+
+            console.log(skaicius);
+            
+            skaicius += 2
+
+        }
+
+        console.log("Antra užduotis");
+
+        x = 1;
+
+        for(x = 1; x < 10; x++){
+
+            let eilute = '';
+
+            for (let j = 1; j <= x; j++) {
+                eilute += j + ' ';
+            }
+
+            console.log(eilute);
+        }
+
+        console.log("Trečia užduotis");
+
+        let komandos = 'Žalgiris, Anadolu Efes, Barcelona BC';
+
+        let komanduMasyvas = komandos.split(',');
+
+        for(let i = 0; i < komanduMasyvas.length; i++){
+
+            komanduMasyvas[i] = komanduMasyvas[i].trim();
+
+        }
+
+        let atsitiktinisIndeksas = random(0, komanduMasyvas.length - 1);
+
+        console.log(komanduMasyvas[atsitiktinisIndeksas]);
+
+        console.log("Ketvirta užduotis");
+
+        let skaiciaiString = "54 77 2 59 17 19 108";
+        let skaiciai = skaiciaiString.split(' ');
+
+        for (let i = 0; i < skaiciai.length; i++) {
+            let skaicius = +skaiciai[i];
+            let yraPirminis = true;
+            let dalikliu = 0;
+
+            if (skaicius <= 1) {
+                yraPirminis = false;
+            } else {
+                for (let j = 2; j <= Math.sqrt(skaicius); j++) {
+                    if (skaicius % j === 0) {
+                        dalikliu++;
+                    }
+                }
+
+                if (dalikliu > 0) {
+                    yraPirminis = false;
+                }
+            }
+
+            if (yraPirminis) {
+                console.log(skaicius + " yra pirminis skaičius");
+            } else {
+                console.log(skaicius + " nėra pirminis skaičius");
+            }
+        }
+
+        console.log("Penkta užduotis");
+
+        let zinute = "jrgkjxvbsigdvifpjqyzlzxsxzjnvgojlziaofdfnufymsjqsxxyknqcchmpepoljekhydgmfvhwipvopllndyuddcgxnleutsmprxqlcnxxthdhtpnutqocvtuanouumbkmlxexzmc";
+        let slaptaZinute = '';
+
+        for(let i = 0; i < zinute.length; i += 8){
+
+            slaptaZinute += zinute[i];
+
+        }
+
+        console.log("Slapta žinutė: ", slaptaZinute);
+
+    
+
+    </script>
+    
+</body>
+</html>
