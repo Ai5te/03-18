@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Užduotys</title>
+</head>
+<body>
+
+    <script>
+
+        function random(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+        }
+
+        console.log("Šešta užduotis");
+        
+        let i = 0;
+        let didesniUz150 = 0;
+        let rezultatas = '';
+
+        while(i < 300){
+
+            let skaicius = random(0, 300);
+
+            if(skaicius > 275){
+
+                rezultatas += '[' + skaicius + ']';
+
+            }else{
+
+                rezultatas += skaicius + " ";
+
+            }
+
+            if(skaicius < 150){
+
+                didesniUz150++
+
+            }
+
+            i++
+
+        }
+
+        console.log("Skaičiai didesni už 150: ", didesniUz150);
+        console.log(rezultatas);
+        
+        console.log("Septinta užduotis");
+
+        rezultatas = '';
+
+        for(i = 1; i < 3000; i++){
+            if(i % 77 === 0){
+
+                rezultatas += i;
+
+                if(i < 3000 - 77){
+
+                    rezultatas += ", ";
+
+                }
+
+            }
+
+        }
+
+        console.log(rezultatas);
+
+        console.log("Aštunta užduotis");
+        
+        let dydis = 25;
+        rezultatas = '';
+
+        for(let i = 1; i < dydis * dydis; i++){
+
+            if(i % dydis === 0){
+
+                rezultatas += '*\n';
+
+            }else{
+
+                rezultatas += '* ';
+
+            }
+
+        }
+
+        console.log(rezultatas);
+
+        console.log("Devinta užduotis");
+
+        dydis = 7;
+        rezultatas = '';
+
+        for(i = 0; i < dydis; i++){
+
+            for(x = 0; x < dydis; x++){
+                if(i === x || x === dydis - i - 1){
+
+                    rezultatas += '5 ';
+
+                }else{
+
+                    rezultatas += '* ';
+                }
+            }
+
+            rezultatas += '\n'
+        }
+
+        console.log(rezultatas);
+
+        console.log("Dešimta užduotis");
+
+        console.log("Dešimta užduotis (A): sustoti iškritus herbui.");
+
+        veikia =true;
+
+        while(veikia){
+
+            let metimas = random(0, 1);
+
+            if(metimas === 1){
+
+                console.log("S - iškrito skaičius.");
+            
+            }else if(metimas === 0){
+
+                console.log("H - iškrito herbas.");
+                console.log("Iškrito herbas metimas sustabdytas");
+                veikia = false
+
+            }
+
+        }
+
+        console.log("Dešimta užduotis (B): Sustoti po 3 herbų (ne iš eilės)");
+
+        let herbuKiekis = 0;
+
+        while(herbuKiekis < 3){
+
+            let metimas = random(0, 1)
+
+            if(metimas === 1){
+                console.log("S - iškrito skaičius.");
+            }else{
+
+                herbuKiekis++;
+                console.log(`H - iškrito herbas (viso H: ${herbuKiekis})`);
+                
+            }
+
+        }
+
+        console.log("Metimas sustabdytas (iškrito 3 herbai)");
+
+        console.log("Scenarijus C: Sustoti kai 3 herbai iš eilės");
+
+        let isEilesHerbai = 0;
+
+        while(isEilesHerbai < 3){
+            let metimas = random(0, 1);
+            if(metimas === 1){
+
+                console.log("S - iškrito skaičius.");
+                isEilesHerbai = 0;
+
+            }else{
+                isEilesHerbai++
+                console.log(`H - Iškrito: Herbas (iš eilės: ${isEilesHerbai})`);
+                
+            }
+        }
+        console.log("Metimas sustabdytas (3 herbai iš eilės)");
+
+        console.log("Vienuolikta užduotis");
+
+        let kazysTaskai = 0;
+        let petrasTaskai = 0;
+
+        while(kazysTaskai < 222 && petrasTaskai <222){
+
+            let kazys = random(5, 25)
+            let petras = random(10, 20)
+
+            kazysTaskai += kazys;
+            petrasTaskai += petras;
+
+            console.log(`Kazys surinko ${kazys} taškus, dabar turi ${kazysTaskai} taškų.`);
+            console.log(`Petras surinko ${petras} taškus, dabar turi ${petrasTaskai} taškų.`);
+            
+            if(kazysTaskai >= 222){
+                console.log(`Partiją laimėjo: Kazys su ${kazysTaskai} taškais!`);
+            }else if(petrasTaskai >= 222){
+                console.log(`Partiją laimėjo: Petras su ${petrasTaskai} taškais!`);
+            }
+        }
+
+        console.log("Ciklai #2");
+        console.log("Pirma užduotis");
+
+        skaicius = 7;
+
+        while(skaicius <= 31){
+
+            console.log(skaicius);
+            skaicius += 2
+
+        }
+
+        console.log("Antra užduotis");
+
+        x = 1;
+
+        for(x = 1;x < 10; x++){
+
+            let eilute = '';
+
+            for(let y = 1; y <= x; y++){
+
+                eilute += y + ' ';
+
+            }
+
+            console.log(eilute);
+            
+
+        }
+
+        console.log("Trečia užduotis");
+
+        let komandos = 'Žalgiris, Anadolu Efes, Barcelona BC';
+        let komanduSarasas = komandos.split(',');
+
+        for(i = 0; i < komanduSarasas.length; i++){
+
+            komanduSarasas[i] = komanduSarasas[i].trim()
+
+        }
+
+        let randomSk = random(0, komanduSarasas.length - 1)
+
+        console.log(komanduSarasas[randomSk]);
+        
+
+    </script>
+    
+</body>
+</html>

@@ -107,7 +107,7 @@
 
         console.log("Septinta užduotis");
 
-         let result = "";
+        let result = "";
 
         for(i = 1; i <= 3000; i++) {
             if (i % 77 === 0){
@@ -142,35 +142,6 @@
         console.log(rezultatas);
 
         console.log("Devinta užduotis");
-
-        // dydis = 7;
-        // rezultatas = '';
-
-        // for(let i = 1; i <= dydis * dydis; i++) {
-        //     if(i % dydis === 0) {
-        //         rezultatas += '*\n';
-        //     } else {
-        //         rezultatas += '* ';
-        //     }
-        // }
-
-        // console.log(rezultatas);
-
-        // dydis = 7;
-        // rezultatas = '';
-
-        // for (let i = 0; i < dydis; i++) {
-        //     for (let j = 0; j < dydis; j++) {
-        //         if (i === j || j === dydis - i - 1) {
-        //             rezultatas += '5 ';
-        //         } else {
-        //             rezultatas += '* ';
-        //         }
-        //     }
-        //     rezultatas += '\n';
-        // }
-
-        // console.log(rezultatas);
 
         dydis = 7;
         rezultatas = '';
@@ -396,7 +367,46 @@
 
         console.log("Slapta žinutė: ", slaptaZinute);
 
-    
+        
+        console.log("Papildoma: Šešta užduotis");
+
+        rezultatas = '';
+        let kiekis = 0;
+
+        while(kiekis < 50){
+
+            let skaiciai = random(1, 200);
+            
+            kiekis ++
+            
+        }
+
+        console.log(rezultatas);
+        
+        console.log("Papildoma: Aštunta užduotis");
+
+        let duotas = "54 77 2 59 17 19 108";
+
+        skaiciai = duotas.split(" ");
+
+        let didziausias = +skaiciai[0]
+        let maziausias = +skaiciai[0]
+
+        for(let i = 1; i < skaiciai.length; i++){
+
+            let skaicius = +skaiciai[i]
+            if(skaicius > didziausias){
+                didziausias = skaicius
+            }
+            if(skaicius < maziausias){
+                maziausias = skaicius
+            }
+
+        }
+
+        console.log("Didžiausias skaičius: ", didziausias);
+        console.log("Mažiausias skaičius: ", maziausias);
+        
 
     </script>
     
