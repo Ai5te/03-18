@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function random(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+        }
+
+        let heading = 'font-weight: bold; font-size: 22px;';
+
+        console.log('%cPIRMA UŽDUOTIS', heading);  
+
+        let masyvas = [];
+
+        masyvas = ["Aguona", "Beržas", "Bijūnas", "Dilgelė", "Dobilas", "Gyslotis", "Kaštonas", "Mėta", "Petražolė", "Varnalėša"]
+
+        console.log(masyvas);
+
+        console.log('%cANTRA UŽDUOTIS', heading); 
+        
+        for(let i = 0; i < masyvas.length; i++){           
+            console.log(masyvas[i]);  
+        }
+
+        console.log('%cTREČIA UŽDUOTIS', heading); 
+
+        masyvas.reverse(); 
+
+        for(let i = 0; i < masyvas.length; i++){          
+            console.log(masyvas[i]);  
+        }
+
+        console.log('%cKETVIRTA UŽDUOTIS', heading);
+
+        let simboliuKiekis = 0;
+        let trumpiZodziai = 0;
+        let ilgiZodziai = 0;
+
+        for(let i = 0; i < masyvas.length; i++){
+
+            simboliuKiekis = masyvas[i].length
+
+            if(simboliuKiekis > 7){
+
+                ilgiZodziai++
+                
+            } else if(simboliuKiekis < 5){
+
+                trumpiZodziai++
+                
+            }
+
+        }
+        
+        console.log("Žodžių trumpesnių nei 5 simboliai:", trumpiZodziai);
+        console.log("Žodžių ilgesnių nei 7 simboliai:", ilgiZodziai);
+
+        console.log('%cPENKTA UŽDUOTIS', heading);
+
+        let maziauDesimt = 0
+        let daugiauPenki = 0
+
+        for(let i = 0; i < masyvas.length; i++){
+
+            simboliuKiekis = masyvas[i].length
+
+            if(simboliuKiekis > 5){
+
+                daugiauPenki++
+
+            }else if(simboliuKiekis < 10){
+
+                maziauDesimt++
+            }
+        }
+        
+        console.log("Žodžių trumpesnių nei 10 simboliai:", maziauDesimt);
+        console.log("Žodžių ilgesnių nei 5 simboliai:", daugiauPenki);
+
+        console.log('%cPIRMA UŽDUOTIS', heading);
+
+        let generuotasMasyvas = [];
+
+        for(let i = 0; i < 30; i++){
+
+            generuotasMasyvas[i]= random(5, 25);
+
+        }
+
+        console.log(generuotasMasyvas);
+
+        console.log('%cANTRA UŽDUOTIS A', heading);
+
+        generuotasMasyvas = [];
+        let reiksme = 0
+        let rezultatas = '';
+
+        for(let i = 0; i < 30; i++){
+
+            skaiciai = (generuotasMasyvas[i]= random(5, 25));
+
+            if(skaiciai > 10){
+                           
+                rezultatas += skaiciai;
+                reiksme++
+            }
+            
+            
+        }
+        console.log(generuotasMasyvas);
+        console.log("Reikšmių didesnių nei 10: ", reiksme);
+
+        
+
+        console.log('%cANTRA UŽDUOTIS B', heading);
+
+        let didziausiaReiksme = generuotasMasyvas[0]
+
+        for(let i = 0; i < generuotasMasyvas.length; i++){
+
+            if(generuotasMasyvas[i] > didziausiaReiksme){
+
+                didziausiaReiksme = generuotasMasyvas[i];
+            }
+
+        }
+        console.log("Didžiausia reikšmė masyve:", didziausiaReiksme);
+
+
+
+        console.log('%cANTRA UŽDUOTIS C', heading);
+
+        let poriniai = 0;
+
+        for(let i = 0; i < generuotasMasyvas.length; i++){
+
+            if(generuotasMasyvas[i] % 2 === 0){
+
+                poriniai += generuotasMasyvas[i];
+
+            }
+        }
+        console.log("poriniu suma", poriniai);
+        
+        
+
+        console.log('%cANTRA UŽDUOTIS D', heading);
+
+        let naujasMasyvas = [];
+
+        for(let i = 0; i < generuotasMasyvas.length; i++){
+
+            naujasMasyvas.push(generuotasMasyvas[i] - 10);
+
+        }
+        console.log([...generuotasMasyvas]);
+        console.log("Naujas masyvas", naujasMasyvas);
+        
+
+
+        console.log('%cANTRA UŽDUOTIS E', heading);
+
+        while(generuotasMasyvas.length < 40){
+
+            let randomReiksme = random(5, 25);
+
+            generuotasMasyvas.push(randomReiksme)
+
+        }
+        console.log("Papildyta 10 reiksmių", ([...generuotasMasyvas]));
+        
+
+
+        console.log('%cANTRA UŽDUOTIS F', heading);
+
+        let poriniaiMasyvas = [];
+        let neporiniaiMasyvas = [];
+
+        for(let i = 0; i < generuotasMasyvas.length; i++){
+
+            if(i % 2 === 0){
+
+                poriniaiMasyvas.push(generuotasMasyvas[i])
+
+            }else{
+
+                neporiniaiMasyvas.push(generuotasMasyvas[i])
+
+            }
+
+        }
+        console.log([...generuotasMasyvas]);
+        console.log("Porinių skaičių masyvas", poriniaiMasyvas);
+        console.log("Neporinių skaičių masyvas", neporiniaiMasyvas);
+
+        
+        
+        console.log('%cANTRA UŽDUOTIS G', heading);
+
+        for(let i = 0; i < generuotasMasyvas.length; i++){
+
+            if(i % 2 === 0 && generuotasMasyvas[i] > 15){
+
+                generuotasMasyvas[i] = 0;
+
+            }
+        }
+        console.log("Modifikuotas pirminis masyvas:", ([...poriniaiMasyvas]));
+        
+
+
+        console.log('%cANTRA UŽDUOTIS H', heading);
+
+
+
+        console.log('%cTREČIA UŽDUOTIS', heading);
+
+        let masyvasPirmas = [];
+        let masyvasAntras = [];
+        let masyvoIlgis = 100;
+
+        for(let i = 0; i < masyvoIlgis; i++){
+
+            masyvasPirmas.push(random(100, 999));
+            masyvasAntras.push(random(100, 999));
+
+        }
+
+        console.log("Masyvas 1:", masyvasPirmas);
+        console.log("Masyvas 2:", masyvasAntras);
+
+
+
+        console.log('%cKETVIRTA UŽDUOTIS', heading);
+
+        let masyvasTrecias = [];
+
+        for(let i = 0; i < masyvoIlgis; i++){
+
+            masyvasTrecias.push(masyvasPirmas[i])
+
+        }
+
+        console.log(masyvasTrecias);
+
+        console.log('%cPENKTA UŽDUOTIS', heading);
+        
+        let masyvasNaujas = [];
+
+        masyvasNaujas.push(random(5, 25));
+        masyvasNaujas.push(random(5, 25));
+
+        for(let i = 2; i < 10; i++){
+
+            masyvasNaujas[i] = masyvasNaujas[i - 2] + masyvasNaujas [i - 1];
+
+        }
+
+        console.log(masyvasNaujas);
+        
+
+    </script>
+
+</body>
+</html>

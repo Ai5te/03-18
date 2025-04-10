@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        function random(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+        }
+
+        // Masyvas (Array)
+        // KOmpleksinis vienetas
+        // Masyvas zymimas []
+        // Duomens tipas - object
+
+        let masyvas = [];
+
+        console.log(typeof masyvas);
+
+        // Masyva = reiksmiu grupe
+        masyvas = [15, "labas pasauli", false, []]
+        
+        console.log(masyvas);
+        // naujai sukurtas masyva su senomis reiksmemis
+        console.log([...masyvas]);
+        
+        // masyvo elementu kiekis:
+        console.log('masyve yra patalpinta elementu: ', masyvas.length);
+        
+        //norint i masyva prideti nauja reiksme:
+        masyvas[4] = "naujai patalpinta stringas";
+
+        // Spread operatorius zymimas - ...
+
+        // masyvo pabaigoje norint patalpinti nauja reiksme:
+        masyvas[masyvas.length] = "dar viena patalpinta reiksme";
+
+        console.log(masyvas);
+
+        //elementu talpinimas (masyvo pabaigoje) pasinaudojant Masyvo metodu:
+        // galime nurodyti neribota elementu kieki
+        masyvas.push(10,20,30);
+
+        console.log([...masyvas]);
+
+        //norint patalpinti elementa masyvo pradzioje, reikalingas masyvo reiksmiu perskirstymas
+        // galime pasinaudoti metodu:
+
+        masyvas.unshift("masyvo pradzioje patalpintas stringas");
+
+        console.log([...masyvas]);
+
+        //Masyvo reiksmiu paemimas:
+
+        let antraReiksme = masyvas[1];
+        console.log(antraReiksme);
+        
+
+        for(let i = 0; i < masyvas.length; i++){
+            console.log(masyvas[i]);
+        }
+
+        // jeigu norime pakeisti masyvo reiksme:
+        masyvas[0] = "masyve pakeista reiksme";
+
+        console.log([...masyvas]);
+
+        // skirtingai nei masyve, stringe keisti reiksmiu pagal pozicija negalie
+        let stringas = "labas";
+
+        stringas[0] = "8";
+
+        console.log(stringas);
+
+        //pakeiciame visas masyvo reiksmes:
+
+        for(let i = 0; i < masyvas.length; i++){
+            masyvas[i] = "pakeista reiksme";
+        }
+        
+        console.log([...masyvas]);
+
+        //Norint istrinti reiksme is masyvo:
+
+        //pirmas parametras nurodo startine pozicija nuo kurios noretumem istrinti elementus
+        // antrasis- kiek ju reikes pasalinti
+        masyvas.splice(3, 4);
+
+        console.log([...masyvas]);
+
+        let pirmasMasyvas = ["Televizorius", "Kompiuteris", "Radijas"];
+        let antrasMasyvas = ["BMW", "Audi", "VW"];
+
+        let jungtinisMasyvas = pirmasMasyvas.concat(antrasMasyvas);
+
+        console.log(jungtinisMasyvas);
+        
+        //jeigu norime patikrinti ar masyve yra patalpinta ieskoma reiksme:
+
+        if(jungtinisMasyvas.includes("Radijas")){
+
+            console.log("Zodis radijas yra patalpintas masyve");
+            
+        }
+
+        // norint susigrazinti reiksmes indeksa:
+
+        console.log(jungtinisMasyvas.indexOf("Audi"));
+
+        //Jeigu indeksas nerastas grazinama atgal -1
+
+        console.log(jungtinisMasyvas.indexOf("Nera"));
+
+        // Norint pasalinti paskutini elementa is masyvo:
+
+        jungtinisMasyvas.pop()
+
+        console.log([...jungtinisMasyvas]);
+        
+        //norint pakeisti masyvo elementu isdestyma atvirsktine tvarka
+
+        jungtinisMasyvas.reverse();
+
+        console.log([...jungtinisMasyvas]);
+
+        // Norint pasiimti dali elementu is masyvo:
+
+        let naujasMasyvas = jungtinisMasyvas.slice(1, 4);
+
+        console.log(naujasMasyvas);
+
+        let ieskomasElementas = "Radijas";
+        let indeksas = -1;
+
+        for(let i = 0; i < naujasMasyvas.length; i++){
+            if(naujasMasyvas[i] === ieskomasElementas) {
+                indeksas = i;
+            }
+        }
+        
+        console.log("Elementu radijas pozicija: ", indeksas);
+        
+        // UZDUOTIS
+
+        let generuotasMasyvas = [];
+
+        for(let i = 0; i < 30; i++){
+
+            generuotasMasyvas[i] = random(5, 25);
+        }
+
+        console.log(generuotasMasyvas);
+        
+
+
+    </script>
+    
+</body>
+</html>
