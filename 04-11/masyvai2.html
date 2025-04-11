@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multidimensinal array</title>
+</head>
+<body>
+    <script>
+
+        const masyvas = [
+            ["Televizorius", 199.99, 15],
+            ["Kompiuteris", 1899.99, 25],
+            ["Radijas", 26.50, 99]
+        ];
+        console.log(masyvas);
+        
+        //norint paiimti vidinio elemento reiksme:
+        // console.log(masyvas[0][0],masyvas[0][1],masyvas[0][2]);
+
+        //norint atspausdinti visu masyvo elementu turini panaudojant cikla:
+        for(let i = 0; i < masyvas.length; i++){
+            console.log(masyvas[i][0],masyvas[i][1],masyvas[i][2]);
+        }
+
+        //is masyvo isfiltruokite visus elementus kuriu kiekis yra daugiau nei dvidesint
+
+        console.log("Filtruota rezultatas");
+        
+        for(let i = 0; i < masyvas.length; i++){
+            if(masyvas[i][2] > 20){
+                console.log(masyvas[i][0],masyvas[i][1],masyvas[i][2]);
+            }
+        }
+
+    </script>
+</body>
+</html>
