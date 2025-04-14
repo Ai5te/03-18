@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function startTimer(){
+            let timer = [];
+            minutes = 0;
+            sekundes = 0;
+
+            for(let i = 600; i >= 0; i--){
+
+                minutes = parseInt(i / 60);
+                sekundes = i % 60;
+                let minStr = minutes.toString().padStart(2, '0');
+                let sekStr = sekundes.toString().padStart(2, '0');
+                let laikas = `${minStr}:${sekStr}`;
+
+                timer.push(laikas);
+            
+            }
+
+            // console.log("Laiko masyvas:", timer);
+            // console.log("Ilgis:", timer.length);
+
+            let i = 0;
+            let intervalas = setInterval(function(){
+                if(i < timer.length){
+                    console.log(timer[i]);
+                    i++               
+                }else {
+                    clearInterval(intervalas);
+                    console.log("Laikas baigėsi!");
+                }
+            }, 1000);
+
+            
+        }
+
+        startTimer();
+
+    </script>
+</body>
+</html>

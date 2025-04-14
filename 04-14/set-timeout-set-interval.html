@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //Sukuriamas uždelstas veiksmas
+        // 1s = 1000ms
+
+        setTimeout(() => {
+
+        //Kas turetu nutikti
+        console.log('Labas Pasauli');
+        }, 4000);
+
+        let skaiciuotuvas = 0;
+
+        //setInterval sukuria besikartojanti veiksma, kas nurodyta laiko kieki
+        let intervaloID = setInterval(() => {
+            console.log('Veiksmas kuri pastoviai kartojame');
+            
+            skaiciuotuvas++;
+
+            if(skaiciuotuvas > 3){
+                //Sunaikina intervala
+                clearInterval(intervaloID);
+            }
+        }, 1000);
+
+    </script>
+</body>
+</html>

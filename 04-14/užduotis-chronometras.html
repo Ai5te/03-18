@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+            let minutes = 0;
+            let seconds = 0;
+
+            function startChronometer() {
+                let interval = setInterval(function() {
+                    seconds++
+
+                    if(seconds === 60){
+                        minutes++
+                        seconds = 0;
+                    }
+
+                    let minStr = minutes.toString().padStart(2, '0');
+                    let secStr = seconds.toString().padStart(2, '0');
+                    let time = `${minStr}:${secStr}`;
+                    console.log(time);
+
+                }, 1000);
+
+                setTimeout(() => {
+
+                    clearInterval(interval);
+                    console.log("Chronometras sustabdytas!");
+                    
+                }, 180000);
+                
+            }
+
+            startChronometer()
+
+    </script>
+</body>
+</html>
