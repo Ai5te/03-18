@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+        /* button {
+            margin: 0 auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        } */
+        .kamuoliukas {
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .black{
+            background-color: black;
+        }
+
+        .yellow {
+            background-color: yellow;
+            color: black;
+        }
+
+        .red{
+            background-color: red;
+        }
+
+        .blue{
+            background-color: blue;
+        }
+
+        .green{
+            background-color: green;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container d-flex flex-column align-items-center">
+        <div id="kamuoliukai" class="d-flex flex-wrap justify-content-center gap-2 mt-4"></div>
+        <button class="mygtukas btn btn-outline-info mt-4" onclick="paspausti()">Ridenti kamuoliuką</button>
+        <p id="rezultatas" class="fs-4 fw-bold mt-3 text-danger"></p>
+    </div>
+    
+    <script>
+        function random(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+        }
+
+        function paspausti() {
+
+            let skaicius = random(0, 100);
+            let kamuoliukas = document.createElement("div");
+
+            kamuoliukas.className = "kamuoliukas";
+            kamuoliukas.textContent = skaicius;
+
+            let spalva = "red";
+
+            if (skaicius <= 19) {
+                kamuoliukas.classList.add("black");
+            } else if (skaicius <= 39) {
+                kamuoliukas.classList.add("yellow");
+            } else if (skaicius <= 59) {
+                kamuoliukas.classList.add("red");
+            } else if (skaicius <= 79) {
+                kamuoliukas.classList.add("blue");
+            } else {
+                kamuoliukas.classList.add("green");
+            }
+
+            document.getElementById("kamuoliukai").appendChild(kamuoliukas);
+
+            let laimingasSkaicius = random(0, 100);
+
+            if (skaicius === laimingasSkaicius) {
+                document.querySelector('.mygtukas').disabled = true;
+                document.getElementById("rezultatas").textContent = "SKAMBUTIS!";
+            }
+
+            
+        }
+
+    </script>
+</body>
+</html>

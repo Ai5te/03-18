@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="result"></div>
+        <!-- Peles kairio klaviso paspaudimo ivykis -->
+        <button onclick="padidinti()">Paspausk mane</button>
+        <button class="warning">Paspausk mane</button>
+    </div>
+    <script>
+        let skaicius = 0;
+
+        document.querySelector('.result').innerHTML = skaicius;
+
+        function padidinti() {
+            skaicius++;
+            //Pakeitimu atvaizdavimas kiekviena karta paspaudus ant mygtuko
+            document.querySelector('.result').innerHTML = skaicius;
+        }
+
+        document.querySelector('.warning').addEventListener('click', () => {
+            console.log('Veikia');
+            
+        });
+    </script>
+</body>
+</html>
