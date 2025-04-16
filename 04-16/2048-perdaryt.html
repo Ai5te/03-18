@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>2048 Blokas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            grid-template-rows: repeat(4, 80px);
+            gap: 10px;
+            width: max-content;
+            margin: 20px auto;
+        }
+
+        .cell {
+            width: 80px;
+            height: 80px;
+            background-color: #cdc1b4;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>2048 Blokas</h2>
+    <div class="grid" id="grid"></div>
+    <button onclick="naujasZaidimas()">Naujas žaidimas</button>
+
+    <script>
+        const gridElement = document.getElementById("grid");
+        let skaiciai = [];
+
+        function sugeneruotiSkaicius() {
+            skaiciai = [];
+            for (let i = 0; i < 16; i++) {
+                // Generuojam atsitiktinį skaičių: 0, 2, 4, 8, 16, 32, 64
+                const exponent = Math.floor(Math.random() * 7);
+                const value = exponent === 0 ? 0 : Math.pow(2, exponent);
+                skaiciai.push(value);
+            }
+        }
+
+        function spalvaSkaiciui(skaicius) {
+            const spalvos = {
+                0: "#cdc1b4",
+                2: "#eee4da",
+                4: "#ede0c8",
+                8: "#f2b179",
+                16: "#f59563",
+                32: "#f67c5f",
+                64: "#f65e3b"
+            };
+            return spalvos[skaicius] || "#3c3a32";
+        }
+
+        function rodytiLentele() {
+            gridElement.innerHTML = "";
+            skaiciai.forEach(skaicius => {
+                const cell = document.createElement("div");
+                cell.className = "cell";
+                cell.style.backgroundColor = spalvaSkaiciui(skaicius);
+                cell.textContent = skaicius === 0 ? "" : skaicius;
+                gridElement.appendChild(cell);
+            });
+        }
+
+        function naujasZaidimas() {
+            sugeneruotiSkaicius();
+            rodytiLentele();
+        }
+
+        // Paleidžiam pirmą kartą automatiškai
+        naujasZaidimas();
+    </script>
+
+</body>
+</html>
