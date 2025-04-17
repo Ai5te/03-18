@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <title>Autocomplete</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+    }
+
+    input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .suggestions {
+      width: 300px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      position: absolute;
+      background-color: white;
+    }
+
+    .suggestion {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .suggestion:hover {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Autocomplete be getElementById</h2>
+  <input type="text" class="search" placeholder="Įveskite klausimą..." autocomplete="off">
+  <div class="suggestions"></div>
+
+  <script>
+    const frazes = [
+      "What is my IP address?",
+      "What time is it?",
+      "How to screenshot on Mac?",
+      "How to boil eggs?",
+      "How to lose weight fast?",
+      "What is love?",
+      "How many ounces in a cup?",
+      "When is Easter?",
+      "How to make pancakes?",
+      "What song is this?"
+    ];
+
+    const search = document.querySelector('.search');
+    const suggestionsBox = document.querySelector('.suggestions');
+
+    search.addEventListener('input', () => {
+      const ivestis = search.value.toLowerCase();
+      let pasiulymai = '';
+
+      if (ivestis.length > 0) {
+        const matches = frazes
+          .filter(fraze => fraze.toLowerCase().includes(ivestis))
+          .slice(0, 5);
+
+        matches.forEach(fraze => {
+          pasiulymai += `<div class="suggestion">${fraze}</div>`;
+        });
+      }
+
+      suggestionsBox.innerHTML = pasiulymai;
+
+      // deleguojame paspaudimą ant bet kurio suggestion
+      document.querySelectorAll('.suggestion').forEach(el => {
+        el.addEventListener('click', () => {
+          search.value = el.textContent;
+          suggestionsBox.innerHTML = '';
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
+

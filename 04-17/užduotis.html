@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          font-family: sans-serif;
+          padding: 40px;
+        }
+    
+        input {
+          width: 300px;
+          padding: 10px;
+          font-size: 16px;
+        }
+    
+        .suggestions {
+          width: 300px;
+          border: 1px solid #ccc;
+          margin-top: 5px;
+          position: absolute;
+          background-color: white;
+        }
+    
+        .suggestion {
+          padding: 10px;
+          cursor: pointer;
+        }
+    
+        .suggestion:hover {
+          background-color: #eee;
+        }
+      </style>
+</head>
+<body>
+
+    <h2>Paieška</h2>
+    <input type="text" placeholder="Įveskite tekstą" class="search">
+    <div class="suggestions"></div>
+    <script>
+        
+        const frazes = [
+            "What to watch",
+            "What is my IP",
+            "Que significa",
+            "Where's my refund",
+            "Cuando cobro",	
+            "Where is my train",
+            "How many days until Christmas",
+            "What time is it",
+            "Who won the election 2024",
+            "How many weeks in a year",
+            "How many ounces in a cup"
+        ]
+
+        const search = document.querySelector('.search');
+        const suggestionsBox = document.querySelector('.suggestions');
+
+        search.addEventListener('input', () => {
+            const ivestis = search.value.toLowerCase();
+            let suggestion = '';
+
+            if(ivestis.length > 0){
+                const matches = frazes
+                .filter(fraze => fraze.toLowerCase().includes(ivestis)).slice(0, 5);
+
+                matches.forEach(fraze => {
+                    suggestion += `<div class="suggestion">${fraze}</div>`;
+                });
+            }
+
+            suggestionsBox.innerHTML = suggestion;
+
+            document.querySelectorAll('.suggestion').forEach(el =>{
+                el.addEventListener('click', () => {
+                    search.value = el.textContent;
+                    suggestionsBox.innerHTML = '';
+
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>

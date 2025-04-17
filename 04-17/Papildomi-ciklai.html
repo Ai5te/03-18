@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="blokeliai">
+        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi quas quibusdam fugit, ullam veniam eos maxime saepe corrupti alias. Fugit quae, provident eum reiciendis dolores laudantium rerum minus pariatur iusto.</div>
+        <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+    </div>
+    <script>
+        const masyvas = [15, 25, 35, 45, 55];
+
+        for(let i = 0; i < masyvas.length; i++){
+            console.log(masyvas[i]);
+        }
+
+        //Jeigu norime sugeneruoti nauja pasyva pagal seno masyvo duomenis
+
+        const naujasMasyvas = masyvas.map(value => value + 99);
+
+        console.log(naujasMasyvas);
+
+        //Kuomet norime apdoroti masyvo reiksme turime supaprastinta for ciklo variacija:
+        //Raktazodis of nurodo, jog bus grazinama kiekviena masyvo reiksme.
+        for(const reiksme of masyvas) {
+            console.log(reiksme);
+        }
+
+        //in raktazodis grazina  kiekvieno masyvo elemento indeksa
+        for(const indeksas in masyvas) {
+            console.log(indeksas);
+            
+        }
+
+        //forEach metoas nieko negrazina
+        //dazniausias panaudojimas kuomet norime iteruoti per elementus
+        masyvas.forEach((value, index, array) => {
+            console.log(value, index, array);
+        });
+
+        //querySelector metodas grazina tik viena ir pati pirma elementa
+        console.log(document.querySelector('.blokeliai div'));
+        
+        //Kiekviename div elemente patalpintame tekste pakeiskite visas a raides zvaigzdutemis
+        document.querySelectorAll('.blokeliai div').forEach((el) => {
+            el.textContent = el.textContent.replaceAll(/[a]/gi, "*");    
+        });
+        
+        
+    </script>
+</body>
+</html>

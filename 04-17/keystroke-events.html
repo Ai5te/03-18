@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    
+</head>
+<body>
+    <div class="container">
+        <input type="text" class="keydown form-control" placeholder="Paspausk ant mygutko ir nepaleisk" onkeydown="mygtukasPaspaustas()">
+        <input type="text" class="form-control" placeholder="Atleisk mygtuka po paspaudimo" onkeyup="mygtukasAtleistas()">
+    </div>
+    <script>
+        
+        //Funkcija bus aktyvuojama vos tik musu klaviaturos mygtukas yra paspaustas
+        //ir tuomet yra neatleidziamas
+        function mygtukasPaspaustas(){
+            
+            //laukelyje ivestos reiksmes susigrazinimas:
+            console.log(document.querySelector('.keydown').value);
+    
+            // console.log('Veikia');
+        }
+
+        //Funkcija bus aktyvuota tik tuomet kai mygtukas bus atleistas
+        function mygtukasAtleistas(){
+            console.log('Veikia');
+            
+        }
+    </script>
+</body>
+</html>

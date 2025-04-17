@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+        .modalinis-langas {
+            position: absolute;
+            top: 10vh;
+            left: 10vw;
+            background-color: black;
+            padding: 35px;
+            color: white;
+            width: 80vw;
+            height: 80vh;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn-primary" onclick="paspaudimas();">Paspausk mane</button>
+        <button class="btn btn-secondary" onclick="atidaryti_modalini_langa();">Paspausk mane</button>
+        <div class="modalinis-langas">
+            <h1>Lorem ipsum dolor sit amet.</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum eius modi facere reiciendis pariatur rerum officiis quas in debitis voluptatum?</p>
+        </div>
+    </div>
+    <script>
+
+        function paspaudimas(){
+            const mygtukas = document.querySelector('button')
+
+            //classlist savybe yra atsakinga uz klasiu valdyma
+            //metodas add() prideda nauja klase
+            if(mygtukas.classList.contains('btn-warning')){
+                //patikriname ar klase btn-warning jau yra
+                //Jei taip tuomet ja pasaliname
+                mygtukas.classList.remove('btn-warning');
+            }else{
+                mygtukas.classList.add('btn-warning')
+            }
+
+            //toggle() metodas atlieka ta pati ka auksciu aprasytas kodas
+            // mygtukas.classList.toggle('btn-warning')
+            
+        }
+
+        function atidaryti_modalini_langa() {
+            // document.querySelector('.modalinis-langas').classList.add('show');
+
+            //prie style savybes galime priskirti visas css savybes
+            //taciau pavadinimai rasomi ne per bruksneli, o camel case principu
+            document.querySelector('.modalinis-langas').style.display = 'block';
+            document.querySelector('.modalinis-langas').style.backgroundColor = 'green';
+            
+        }
+    </script>
+</body>
+</html>
