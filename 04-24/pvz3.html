@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap integracija -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <!-- Bootstrap icons integracija -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+
+        .rating {
+            position: relative;
+            width: fit-content;
+        }
+
+        .stars-active {
+            color: rgb(250, 208, 38);
+            position: absolute;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .stars {
+            color: gray;
+        }
+
+        .product-title {
+            font-size: 18px;
+            color: rgb(6, 151, 247);
+        }
+
+        .price .current {
+            color: red;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .price .old {
+            color: gray;
+            font-size: 14px;
+            text-decoration: line-through;
+        }
+
+        .discount {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: white;
+            padding: 3px 10px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container py-5" style="max-width: 1024px;">
+        <h1>Produktų sąrašas</h1>
+        <div class="result mt-5">
+            
+        </div>
+    </div>
+
+    <!-- Forma -->
+
+    <div class="container mt-4">
+        <h3>Pridėti naują produktą</h3>
+        <form  id="productForm" class="mb-4">
+            <div class="mb-2">
+                <input type="text" class="form-control" placeholder="Pavadinimas" id="title" required>
+            </div>
+            <div class="mb-2">
+                <textarea class="form-control" placeholder="Aprašymas" id="description" required></textarea>
+            </div>
+            <div class="mb-2">
+                <input type="url" class="form-control" placeholder="Nuotraukos adresas(URL)" id="thumbnail" required>
+            </div>
+            <div class="mb-2">
+                <input type="number" step="0.01" class="form-control" placeholder="Įvertinimas" id="rating" required>
+            </div>
+            <div class="mb-2">
+            <input type="number" step="0.01" class="form-control" placeholder="Kaina" id="price" required>
+            </div>
+            <div class="mb-2">
+                <input type="number" step="0.01" class="form-control" placeholder="Nuolaida" id="discountPercentage" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Pridėti produktą</button>
+        </form>
+    </div>
+
+    <!-- Shopping cart -->
+
+    <div class="container mt-4 d-none" id="cart">
+        <h3>Shopping cart</h3>
+        <div id="cartItems"></div>
+
+        <div class="mt-3">
+            <label for="shipping">Pristatymas</label>
+            <select id="shipping" class="form-select">
+                <option value="5">DPD Kurjeris + 5Eur</option>
+                <option value="2.99">Omniva Paštomatas + 2.99 Eur</option>
+            </select>
+            <div class="mt-3">
+                <label for="discountCode">Nuolaidos kodas</label>
+                <input type="text" id="discountCode" class="form-control" placeholder="Give Code">
+            </div>
+    
+            <div class="mt-3">
+                <strong>Galutinė suma: <span id="totalPrice">0</span> Eur</strong>
+            </div>
+    
+            <div class="mt-3">
+                <button class="btn btn-secondary" onclick="toggleCart(false)">Back to Shop</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+const data = {
+    products: [
+        {
+            brand: 'Essence',
+            category: 'beauty',
+            description: 'The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.',
+            discountPercentage: 7.17,
+            id: 1,
+            price: 9.99,
+            rating: 4.94,
+            stock: 5,
+            thumbnail: 'https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png',
+            title: 'Essence Mascara Lash Princess'
+        },
+        {
+            brand: 'Glamour Beauty',
+            category: 'beauty',
+            description: "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+            discountPercentage: 5.5,
+            id: 2,
+            price: 19.99,
+            rating: 3.28,
+            stock: 44,
+            thumbnail: 'https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/thumbnail.png',
+            title: 'Eyeshadow Palette with Mirror'
+        },
+        {
+            brand: 'Velvet Touch',
+            category: 'beauty',
+            description: 'The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.',
+            discountPercentage: 18.14,
+            id: 3,
+            price: 14.99,
+            rating: 3.82,
+            stock: 59,
+            thumbnail: 'https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/thumbnail.png',
+            title: 'Powder Canister'
+        },
+        {
+            brand: 'Chic Cosmetics',
+            category: 'beauty',
+            description: 'The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.',
+            discountPercentage: 19.03,
+            id: 4,
+            price: 12.99,
+            rating: 2.51,
+            stock: 68,
+            thumbnail: 'https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/thumbnail.png',
+            title: 'Red Lipstick'
+        },
+        {
+            brand: 'Nail Couture',
+            category: 'beauty',
+            description: 'The Red Nail Polish offers a rich and glossy red hue for vibrant and polished nails. With a quick-drying formula, it provides a salon-quality finish at home.',
+            discountPercentage: 2.46,
+            id: 5,
+            price: 8.99,
+            rating: 3.91,
+            stock: 71,
+            thumbnail: 'https://cdn.dummyjson.com/products/images/beauty/Red%20Nail%20Polish/thumbnail.png',
+            title: 'Red Nail Polish'
+        },
+        {
+            brand: 'Calvin Klein',
+            category: 'fragrances',
+            description: "CK One by Calvin Klein is a classic unisex fragrance, known for its fresh and clean scent. It's a versatile fragrance suitable for everyday wear.",
+            discountPercentage: 0.32,
+            id: 6,
+            price: 49.99,
+            rating: 4.85,
+            stock: 17,
+            thumbnail: 'https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/thumbnail.png',
+            title: 'Calvin Klein CK One'
+        },
+        {
+            brand: 'Chanel',
+            category: 'fragrances',
+            description: 'Coco Noir by Chanel is an elegant and mysterious fragrance, featuring notes of grapefruit, rose, and sandalwood. Perfect for evening occasions.',
+            discountPercentage: 18.64,
+            id: 7,
+            price: 129.99,
+            rating: 2.76,
+            stock: 41,
+            thumbnail: 'https://cdn.dummyjson.com/products/images/fragrances/Chanel%20Coco%20Noir%20Eau%20De/thumbnail.png',
+            title: 'Chanel Coco Noir Eau De'
+        },
+        {
+            brand: 'Dior',
+            category: 'fragrances',
+            description: "J'adore by Dior is a luxurious and floral fragrance, known for its blend of ylang-ylang, rose, and jasmine. It embodies femininity and sophistication.",
+            discountPercentage: 17.44,
+            id: 8,
+            price: 89.99,
+            rating: 3.31,
+            stock: 91,
+            thumbnail: "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/thumbnail.png",
+            title: "Dior J'adore"
+        },
+        {
+            brand: 'Dolce &amp; Gabbana',
+            category: 'fragrances',
+            description: "Dolce Shine by Dolce &amp; Gabbana is a vibrant and fruity fragrance, featuring notes of mango, jasmine, and blonde woods. It's a joyful and youthful scent.",
+            discountPercentage: 11.47,
+            id: 9,
+            price: 69.99,
+            rating: 2.68,
+            stock: 3,
+            thumbnail: 'https://cdn.dummyjson.com/products/images/fragrances/Dolce%20Shine%20Eau%20de/thumbnail.png',
+            title: 'Dolce Shine Eau de'
+        },
+        {
+            brand: 'Gucci',
+            category: 'fragrances',
+            description: "Gucci Bloom by Gucci is a floral and captivating fragrance, with notes of tuberose, jasmine, and Rangoon creeper. It's a modern and romantic scent.",
+            discountPercentage: 8.9,
+            id: 10,
+            price: 79.99,
+            rating: 2.69,
+            stock: 93,
+            thumbnail: 'https://cdn.dummyjson.com/products/images/fragrances/Gucci%20Bloom%20Eau%20de/thumbnail.png',
+            title: 'Gucci Bloom Eau de'
+        }
+    ]
+}
+
+// Shopping cart
+
+const cartData = {};
+
+function toggleCart(show) {
+    document.getElementById('shop').classList.toggle('d-none', show);
+    document.getElementById('cart').classList.toggle('d-none', !show);
+    if (show) updateCart();
+}
+
+function addToCart(productId) {
+    const product = data.products.find(p => p.id === productId);
+    if(cartData[product.id]){
+        cartData[product.id].quantity++;
+    } else {
+        cartData[product.id] = {...product, quantity: 1 };
+    }
+    toggleCart(true);
+    updateCart()
+}
+
+function updateCart() {
+    const container = document.getElementById('cartItems');
+    container.innerHTML = '';
+    let total = 0;
+    for(const id in cartData) {
+        const item = cartData[id];
+        const lineTotal = item.price * item.quantity;
+        total += lineTotal;
+        container.innerHTML += `
+            <div class="row align-items-center border-bottom py-2">
+                <div class="col-3">
+                    <img src="${item.thumbnail}" class="img-fluid" style="max-height: 80px;">
+                </div>
+                <div class="col-3">${item.title}</div>
+                <div class="col-3">
+                    <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${item.id}, -1)">-</button>
+                    <input type="number" min="1" value="${item.quantity}" onchange="setQty(${item.id}, this.value)" class="mx-1" style="width: 50px;">
+                    <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${item.id}, 1)">+</button>
+                </div>
+                <div class="col-2">
+                    ${(item.price * item.quantity).toFixed(2)} Eur
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-sm btn-danger" onclick="removeItem(${item.id})">
+                    <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+    const shipping = parseFloat(document.getElementById('shipping').value);
+    let discount = 0;
+    if (document.getElementById('discountCode').value.trim() === 'VCS10') {
+        discount = 0.1 * total;
+    }
+    document.getElementById('totalPrice').textContent = (total - discount + shipping).toFixed(2);
+}
+
+function changeQty(id, diff) {
+    if(cartData[id]){
+        cartData[id].quantity = Math.max(1, cartData[id].quantity + diff);
+        updateCart();
+    }
+}
+
+function setQty(id, value) {
+    const val = Math.max(1, parseInt(value));
+    cartData[id].quantity = val;
+    updateCart();
+}
+
+function removeItem(id) {
+    delete cartData[id];
+    updateCart();
+}
+
+document.getElementById('shipping').addEventListener('change', updateCart);
+document.getElementById('discountCode').addEventListener('input', updateCart);
+
+// Product list
+function renderProducts() {
+
+    const productList = data.products.map(row => {
+            const nuolaida = row.price / 100 * row.discountPercentage;
+            const galutineKaina = row.price - nuolaida;
+    
+            return `<div class="row border-top py-4">
+                <div class="col-3">
+                    <div class="image position-relative">
+                        <img 
+                            src="${row.thumbnail}" 
+                            alt="Nuotrauka"
+                            style="width: 200px; height: 150px; object-fit: cover;"
+                        >
+                        <span class="discount">-${row.discountPercentage}%</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <h3 class="product-title">${row.title}</h3>
+                    <div class="rating mb-3">
+                        <div class="stars-active" style="width: ${row.rating * 2 * 10}%;">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                    </div>
+                    <div class="description">
+                        ${row.description}
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="price mb-4">
+                        <span class="current">$${galutineKaina.toFixed(2)}</span>
+                        <span class="old">$${row.price}</span>
+                    </div>
+                    <div class="button">
+                        <button class="btn btn-warning d-block w-100" onclick="addToCart(${row.id})">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        `
+    });
+    
+    document.querySelector('.result').innerHTML = productList.join('');
+    
+    }
+    
+    renderProducts();
+
+    // Form
+    document.getElementById('productForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+    
+        const title = document.getElementById('title').value.trim();
+        const description = document.getElementById('description').value.trim();
+        const thumbnail = document.getElementById('thumbnail').value.trim();
+        const rating = parseFloat(document.getElementById('rating').value);
+        const price = parseFloat(document.getElementById('price').value);
+        const discountPercentage = parseFloat(document.getElementById('discountPercentage').value);
+    
+        // Naujo produkto sukurimas
+        const newProduct = {
+                title,
+                description,
+                thumbnail,
+                rating,
+                price,
+                discountPercentage,
+                id: data.products.length + 1,
+                stock: 10,
+                brand: "Naujas prekės ženklas",
+                category: "beauty"
+            };
+    
+            // Įdedame į masyvą
+            data.products.push(newProduct);
+    
+            // Atvaizduoti produktus iš naujo
+            renderProducts();
+            
+            // Išvalyti formą
+            document.getElementById('productForm').reset();
+    
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Receptų Aplikacija</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .meal-card {
+      display: inline-block;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px;
+      width: 150px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .meal-card img {
+      width: 100%;
+      border-radius: 4px;
+    }
+    #mealDetails {
+      margin-top: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .filter-links {
+      margin: 10px 0;
+    }
+    .filter-links a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Receptų Aplikacija</h1>
+
+  <input type="text" id="searchInput" placeholder="Ieškoti pagal pavadinimą..." />
+  <button id="searchBtn">Ieškoti</button>
+  <button id="randomBtn">Man sekasi!</button>
+
+  <div class="filter-links" id="letterLinks"></div>
+
+  <div id="mealList"></div>
+
+  <div id="mealDetails" class="hidden"></div>
+
+  <script>
+    const mealList = document.getElementById('mealList');
+    const mealDetails = document.getElementById('mealDetails');
+    const searchBtn = document.getElementById('searchBtn');
+    const randomBtn = document.getElementById('randomBtn');
+    const searchInput = document.getElementById('searchInput');
+    const letterLinks = document.getElementById('letterLinks');
+
+    function displayMeals(meals, append = false) {
+      if (!append) mealList.innerHTML = '';
+      mealDetails.classList.add('hidden');
+
+      if (meals) {
+        meals.forEach(meal => {
+          const mealCard = document.createElement('div');
+          mealCard.className = 'meal-card';
+          mealCard.innerHTML = `
+            <h3>${meal.strMeal}</h3>
+            <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
+          `;
+          mealCard.addEventListener('click', () => {
+            fetchMealDetails(meal.idMeal);
+          });
+          mealList.appendChild(mealCard);
+        });
+      } else {
+        if (!append) mealList.innerHTML = '<p>Receptų nerasta.</p>';
+      }
+    }
+
+    function fetchMealDetails(id) {
+      fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+        .then(res => res.json())
+        .then(data => {
+          const meal = data.meals[0];
+          showMealDetails(meal);
+        });
+    }
+
+    function showMealDetails(meal) {
+      mealDetails.innerHTML = `
+        <h2>${meal.strMeal}</h2>
+        <img src="${meal.strMealThumb}" alt="${meal.strMeal}" width="300">
+        <p><strong>Kategorija:</strong> <a href="#" onclick="fetchMealsByFilter('c', '${meal.strCategory}')">${meal.strCategory}</a></p>
+        <p><strong>Kilmė:</strong> <a href="#" onclick="fetchMealsByFilter('a', '${meal.strArea}')">${meal.strArea}</a></p>
+        <p><strong>Instrukcijos:</strong> ${meal.strInstructions}</p>
+        <p><a href="${meal.strYoutube}" target="_blank">Youtube video</a></p>
+        <h4>Ingredientai:</h4>
+        <ul>
+          ${getIngredientsList(meal).map(i => `<li>${i}</li>`).join('')}
+        </ul>
+        <button onclick="goBack()">Atgal į sąrašą</button>
+      `;
+      mealDetails.classList.remove('hidden');
+      mealList.innerHTML = '';
+    }
+
+    function getIngredientsList(meal) {
+      const ingredients = [];
+      for (let i = 1; i <= 20; i++) {
+        const ingredient = meal[`strIngredient${i}`];
+        const measure = meal[`strMeasure${i}`];
+        if (ingredient && ingredient.trim()) {
+          ingredients.push(`${ingredient} - ${measure}`);
+        }
+      }
+      return ingredients;
+    }
+
+    function goBack() {
+      mealDetails.classList.add('hidden');
+      loadInitialMeals();
+    }
+
+    function fetchMealsByFilter(type, value) {
+      fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?${type}=${value}`)
+        .then(res => res.json())
+        .then(data => {
+          displayMeals(data.meals);
+        });
+    }
+
+    function loadRandomMeals(count = 6) {
+      mealList.innerHTML = '';
+      for (let i = 0; i < count; i++) {
+        fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+          .then(res => res.json())
+          .then(data => {
+            displayMeals([data.meals[0]], true);
+          });
+      }
+    }
+
+    function loadMealsByFirstLetter(letter) {
+      fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`)
+        .then(res => res.json())
+        .then(data => {
+          displayMeals(data.meals);
+        });
+    }
+
+    searchBtn.addEventListener('click', () => {
+      const query = searchInput.value.trim();
+      if (query) {
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
+          .then(res => res.json())
+          .then(data => {
+            displayMeals(data.meals);
+          });
+      }
+    });
+
+    randomBtn.addEventListener('click', () => {
+      fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+        .then(res => res.json())
+        .then(data => {
+          showMealDetails(data.meals[0]);
+        });
+    });
+
+    // Generate alphabet links
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    for (const letter of alphabet) {
+      const link = document.createElement('a');
+      link.href = '#';
+      link.textContent = letter;
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        loadMealsByFirstLetter(letter);
+      });
+      letterLinks.appendChild(link);
+    }
+
+    // Load starting meals
+    function loadInitialMeals() {
+      loadRandomMeals(6);
+    }
+
+    loadInitialMeals();
+  </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User(API)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+
+    .container {
+        max-width: 500px;
+        margin-top: 50px;
+        text-align: center;
+        font-family: "Roboto", sans-serif;
+    }
+    
+    .user-img img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid #939494;
+    }
+
+    .icon i {
+        font-size: 24px;
+        margin: 10px;
+        cursor: pointer;
+        color: #cecaca;
+    }
+
+    .icon i:hover {
+        color: #83ba43;
+    }
+
+    .info-title {
+        font-size: 18px;
+        letter-spacing: .5px;
+        margin-top: 20px;
+        color: #9999a5;
+    }
+
+    .info-value {
+        font-size: 30px;
+        color: #333;
+        padding-bottom: 15px;
+        font-weight: 500;
+    }
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class="user-img">
+            <img id="userPhoto" src="" alt="user">
+        </div>
+        <div class="text">
+            <div class="info-title" id="infoTitle">User information</div>
+            <div class="info-value" id="infoValue">Hover over the icon</div>
+        </div>
+        <div class="icon">
+            <i class="bi bi-person" data-type="name" title="Name"></i>
+            <i class="bi bi-envelope" data-type="email" title="Email"></i>
+            <i class="bi bi-calendar2-week" data-type="birthday" title="Birthday"></i>
+            <i class="bi bi-geo-alt" data-type="location" title="Location"></i>
+            <i class="bi bi-telephone" data-type="phone" title="Phone"></i>
+            <i class="bi bi-lock" data-type="password" title="Password"></i>
+        </div>
+    </div>
+
+    <script>
+
+        let userData = {};
+
+        fetch("https://randomuser.me/api/")
+        .then(response => response.json())
+        .then(data => {
+            const user = data.results[0];
+            userData = {
+                name: `${user.name.first} ${user.name.last}`,
+                email: user.email,
+                birthday: new Date(user.dob.date).toLocaleDateString(),
+                location: `${user.location.city}, ${user.location.country}`,
+                phone: user.phone,
+                password: user.login.password,
+                picture: user.picture.large
+            };
+            document.getElementById("userPhoto").src = userData.picture;
+
+            document.getElementById("infoTitle").innerText = "Hi, My name is";
+            document.getElementById("infoValue").innerText = userData.name;
+        });
+
+        const icons = document.querySelectorAll(".icon i");
+        icons.forEach(icon => {
+            icon.addEventListener("mouseenter", () => {
+                const type = icon.getAttribute("data-type");
+                const titleMap = {
+                    name: "Hi, My name is",
+                    email: "My email address is",
+                    birthday: "My birthday is",
+                    location: "My address is",
+                    phone: "My phone number is",
+                    password: "My password is"
+                };
+                document.getElementById("infoTitle").innerText = titleMap[type];
+                document.getElementById("infoValue").innerText = userData[type];
+            });
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<body>
+    
+    <h2>Pasirinkite šuns veislę</h2>
+
+    <input list="breedList" id="breedInput" placeholder="Įveskite veislę...">
+    <datalist id="breedList"></datalist>
+
+    <div id="results"></div>
+    
+    <!-- Reikalingas divas paveikslėliui -->
+    <div class="result"></div>
+
+    <script>
+        const breedData = {
+            breeds: [
+                { "breed": "affenpinscher", "subBreeds": [] },
+                { "breed": "australian", "subBreeds": ["kelpie", "shepherd"] },
+                { "breed": "bulldog", "subBreeds": ["boston", "english", "french"] },
+                { "breed": "poodle", "subBreeds": ["miniature", "standard"] }
+                // Trumpesnis pavyzdys testavimui
+            ]
+        };
+
+        const datalist = document.getElementById("breedList");
+        breedData.breeds.forEach(b => {
+            if (b.subBreeds.length > 0) {
+                b.subBreeds.forEach(sub => {
+                    const option = document.createElement("option");
+                    option.value = `${sub} ${b.breed}`;
+                    datalist.appendChild(option);
+                });
+            } else {
+                const option = document.createElement("option");
+                option.value = b.breed;
+                datalist.appendChild(option);
+            }
+        });
+
+        fetch('https://dog.ceo/api/breeds/image/random')
+            .then(resp => resp.json())
+            .then(resp => {
+                document.querySelector('.result').innerHTML = `<img src="${resp.message}" alt="dog" style="max-width:300px">`;
+            });
+    </script>
+
+</body>

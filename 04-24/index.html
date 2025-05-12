@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produktų sąrašas</title>
+    <!-- Bootstrap integracija -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <!-- Bootstrap icons integracija -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Stiliaus integracija -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- defer raktažodis nurodo, jog skripto paleidimas įvyks po galutinio DOM generavimo -->
+    <script src="assets/js/products.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+    <!-- Form -->
+
+    <div class="container mt-4">
+        <h3>Pridėti naują produktą</h3>
+        <form  id="productForm" class="mb-4">
+            <div class="mb-2">
+                <input type="text" class="form-control" placeholder="Pavadinimas" id="title" required>
+            </div>
+            <div class="mb-2">
+                <textarea class="form-control" placeholder="Aprašymas" id="description" required></textarea>
+            </div>
+            <div class="mb-2">
+                <input type="url" class="form-control" placeholder="Nuotraukos adresas(URL)" id="thumbnail" required>
+            </div>
+            <div class="mb-2">
+                <input type="number" step="0.01" class="form-control" placeholder="Įvertinimas" id="rating" required>
+            </div>
+            <div class="mb-2">
+            <input type="number" step="0.01" class="form-control" placeholder="Kaina" id="price" required>
+            </div>
+            <div class="mb-2">
+                <input type="number" step="0.01" class="form-control" placeholder="Nuolaida" id="discountPercentage" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Pridėti produktą</button>
+        </form>
+    </div>
+    <!-- Product list -->
+
+    <div class="container py-5" id="shop" style="max-width: 1024px;">
+        <h1>Produktų sąrašas</h1>
+        <div class="result mt-5">
+
+        </div>
+    </div>
+
+    <!-- Shopping cart -->
+
+    <div class="container mt-4 d-none" id="cart">
+        <h3>Shopping cart</h3>
+        <div id="cartItems"></div>
+
+        <div class="mt-3">
+            <label for="shipping">Pristatymas</label>
+            <select id="shipping" class="form-select">
+                <option value="5">DPD Kurjeris + 5Eur</option>
+                <option value="2.99">Omniva Paštomatas + 2.99 Eur</option>
+            </select>
+            <div class="mt-3">
+                <label for="discountCode">Nuolaidos kodas</label>
+                <input type="text" id="discountCode" class="form-control" placeholder="Give Code">
+            </div>
+    
+            <div class="mt-3">
+                <strong>Galutinė suma: <span id="totalPrice">0</span> Eur</strong>
+            </div>
+    
+            <div class="mt-3">
+                <button class="btn btn-secondary" onclick="toggleCart(false)">Back to Shop</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function random(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+        }
+
+        console.log("TELEVIZORIAUS KLASE");
+        
+
+        class Televizorius {
+            constructor(gamintojas){
+                this.gamintojas = gamintojas;
+                this.garsas = 50;
+                this.kanalas = 1;
+            }
+
+            // Garso keitimas
+            padidintiGarsa(){
+            if(this.garsas < 100){
+                    this.garsas++;
+                }
+            }
+
+            sumazintiGarsa() {
+                if(this.garsas > 0){
+                    this.garsas--;
+                }
+            }
+
+            //Kanalo keitimas
+
+            pakeistiKanala(naujasKanalas){
+                if(naujasKanalas >= 1 && naujasKanalas <= 50){
+                    this.kanalas = naujasKanalas;
+                }else{
+                    this.kanalas = 1;
+                }
+            }
+
+            atstatytiParametrus(){
+                this.garsas = 50;
+                this.kanalas = 1;
+            }
+
+            televizoriusDuomenys() {
+                return `Televizorius '${this.gamintojas}' šiuo metu rodo ${this.kanalas} kanalą. Garso lygis ${this.garsas}`
+            }
+            
+        }
+
+        const pakeistasGarsas = new Televizorius('Sony');
+        console.log(pakeistasGarsas);
+        
+        // pakeistasGarsas.padidintiGarsa();
+        // console.log(pakeistasGarsas);
+
+        // pakeistasGarsas.sumazintiGarsa();
+        // console.log(pakeistasGarsas);
+
+        console.log(pakeistasGarsas.televizoriusDuomenys());
+        
+        console.log("VAISIAI");
+        
+        class Vaisiai {
+            dydis = random(5, 25);
+            id = random(1000000, 9999999);
+            prakastas = false;
+
+            prakasti(){
+                this.prakastas = true;
+            }
+        }
+
+        class Krepsys {
+
+            static vaisiai = [];
+
+            static pripildyti() {
+                // Jei vaisių mažiau nei 20, pridėti trūkstamus vaisius
+            while (Krepsys.vaisiai.length < 20) {
+                    Krepsys.vaisiai.push(new Vaisiai());  // Sukuriame naują Vaisių objektą
+            }
+
+                Krepsys.vaisiai.sort((a, b) => b.dydis - a.dydis);
+            }
+
+            static isimti(){
+                const isimtasVaisius = Krepsys.vaisiai.splice(0, 1);
+                return isimtasVaisius[0];
+            }
+ 
+        }
+
+        Krepsys.pripildyti();
+        console.log(Krepsys.vaisiai);
+
+        const isimtasVaisius = Krepsys.isimti();
+        console.log(isimtasVaisius);
+                
+
+    </script>
+</body>
+</html>

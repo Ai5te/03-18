@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Pasirinkite šuns veislę</h2>
+
+<input list="breedList" id="breedInput" placeholder="Įveskite veislę...">
+<datalist id="breedList"></datalist>
+<button id="searchBtn">Ieškoti nuotraukos</button>
+
+<div class="result"></div>
+
+<script>
+    const breedData = {
+        breeds: [
+            { "breed": "affenpinscher", "subBreeds": [] },
+            { "breed": "australian", "subBreeds": ["kelpie", "shepherd"] },
+            { "breed": "bulldog", "subBreeds": ["boston", "english", "french"] },
+            { "breed": "poodle", "subBreeds": ["miniature", "standard"] }
+            // Pridėk visą sąrašą čia
+        ]
+    };
+    
+    // Užpildome datalist
+    const datalist = document.getElementById("breedList");
+    breedData.breeds.forEach(b => {
+        if (b.subBreeds.length > 0) {
+            b.subBreeds.forEach(sub => {
+                const option = document.createElement("option");
+                option.value = `${sub} ${b.breed}`; // pvz: "english bulldog"
+                datalist.appendChild(option);
+            });
+        } else {
+            const option = document.createElement("option");
+            option.value = b.breed;
+            datalist.appendChild(option);
+        }
+    });
+    
+    // Veiksmas paspaudus mygtuką
+    document.getElementById("searchBtn").addEventListener("click", () => {
+        const input = document.getElementById("breedInput").value.trim().toLowerCase();
+        const resultDiv = document.querySelector(".result");
+    
+        let url = "";
+    
+        const parts = input.split(" ");
+        if (parts.length === 2) {
+            // sub-breed + breed
+            const [sub, breed] = parts;
+            url = `https://dog.ceo/api/breed/${breed}/${sub}/images/random`;
+        } else if (parts.length === 1) {
+            url = `https://dog.ceo/api/breed/${parts[0]}/images/random`;
+        } else {
+            resultDiv.innerHTML = "Neteisingas formatas";
+            return;
+        }
+    
+        fetch(url)
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.status === "success") {
+                    resultDiv.innerHTML = `<img src="${data.message}" alt="dog" style="max-width:300px">`;
+                } else {
+                    resultDiv.innerHTML = "Veislė nerasta";
+                }
+            })
+            .catch(err => {
+                resultDiv.innerHTML = "Klaida gaunant nuotrauką";
+            });
+    });
+    </script>
+    
+</body>
+</html>

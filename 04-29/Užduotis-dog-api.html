@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <style>
+
+        *{
+            box-sizing: border-box;
+        }
+
+        .container{
+            margin: 60px auto;
+        }
+
+        input{
+            width: 400px;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .result{
+            margin: 30px;
+            margin-left: 50px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Pasirinkite šuns veislę</h2>
+
+        <input list="breedList" id="breedInput" placeholder="Įveskite veislę...">
+        <datalist id="breedList"></datalist>
+        <button id="searchBtn" class="btn btn-outline-secondary">Ieškoti nuotraukos</button>
+
+        <div class="result"></div>
+    </div>
+
+    <script>
+
+    const breedData = {
+    breeds: [
+            { "breed": "affenpinscher", "subBreeds": [] },
+            { "breed": "african", "subBreeds": [] },
+            { "breed": "airedale", "subBreeds": [] },
+            { "breed": "akita", "subBreeds": [] },
+            { "breed": "appenzeller", "subBreeds": [] },
+            { "breed": "australian", "subBreeds": ["kelpie", "shepherd"] },
+            { "breed": "bakharwal", "subBreeds": ["indian"] },
+            { "breed": "basenji", "subBreeds": [] },
+            { "breed": "beagle", "subBreeds": [] },
+            { "breed": "bluetick", "subBreeds": [] },
+            { "breed": "borzoi", "subBreeds": [] },
+            { "breed": "bouvier", "subBreeds": [] },
+            { "breed": "boxer", "subBreeds": [] },
+            { "breed": "brabancon", "subBreeds": [] },
+            { "breed": "briard", "subBreeds": [] },
+            { "breed": "buhund", "subBreeds": ["norwegian"] },
+            { "breed": "bulldog", "subBreeds": ["boston", "english", "french"] },
+            { "breed": "bullterrier", "subBreeds": ["staffordshire"] },
+            { "breed": "cattledog", "subBreeds": ["australian"] },
+            { "breed": "cavapoo", "subBreeds": [] },
+            { "breed": "chihuahua", "subBreeds": [] },
+            { "breed": "chippiparai", "subBreeds": ["indian"] },
+            { "breed": "chow", "subBreeds": [] },
+            { "breed": "clumber", "subBreeds": [] },
+            { "breed": "cockapoo", "subBreeds": [] },
+            { "breed": "collie", "subBreeds": ["border"] },
+            { "breed": "coonhound", "subBreeds": [] },
+            { "breed": "corgi", "subBreeds": ["cardigan"] },
+            { "breed": "cotondetulear", "subBreeds": [] },
+            { "breed": "dachshund", "subBreeds": [] },
+            { "breed": "dalmatian", "subBreeds": [] },
+            { "breed": "dane", "subBreeds": ["great"] },
+            { "breed": "danish", "subBreeds": ["swedish"] },
+            { "breed": "deerhound", "subBreeds": ["scottish"] },
+            { "breed": "dhole", "subBreeds": [] },
+            { "breed": "dingo", "subBreeds": [] },
+            { "breed": "doberman", "subBreeds": [] },
+            { "breed": "elkhound", "subBreeds": ["norwegian"] },
+            { "breed": "entlebucher", "subBreeds": [] },
+            { "breed": "eskimo", "subBreeds": [] },
+            { "breed": "finnish", "subBreeds": ["lapphund"] },
+            { "breed": "frise", "subBreeds": ["bichon"] },
+            { "breed": "gaddi", "subBreeds": ["indian"] },
+            { "breed": "germanshepherd", "subBreeds": [] },
+            { "breed": "greyhound", "subBreeds": ["indian", "italian"] },
+            { "breed": "groenendael", "subBreeds": [] },
+            { "breed": "havanese", "subBreeds": [] },
+            { "breed": "hound", "subBreeds": ["afghan", "basset", "blood", "english", "ibizan", "plott", "walker"] },
+            { "breed": "husky", "subBreeds": [] },
+            { "breed": "keeshond", "subBreeds": [] },
+            { "breed": "kelpie", "subBreeds": [] },
+            { "breed": "kombai", "subBreeds": [] },
+            { "breed": "komondor", "subBreeds": [] },
+            { "breed": "kuvasz", "subBreeds": [] },
+            { "breed": "labradoodle", "subBreeds": [] },
+            { "breed": "labrador", "subBreeds": [] },
+            { "breed": "leonberg", "subBreeds": [] },
+            { "breed": "lhasa", "subBreeds": [] },
+            { "breed": "malamute", "subBreeds": [] },
+            { "breed": "malinois", "subBreeds": [] },
+            { "breed": "maltese", "subBreeds": [] },
+            { "breed": "mastiff", "subBreeds": ["bull", "english", "indian", "tibetan"] },
+            { "breed": "mexicanhairless", "subBreeds": [] },
+            { "breed": "mix", "subBreeds": [] },
+            { "breed": "mountain", "subBreeds": ["bernese", "swiss"] },
+            { "breed": "mudhol", "subBreeds": ["indian"] },
+            { "breed": "newfoundland", "subBreeds": [] },
+            { "breed": "otterhound", "subBreeds": [] },
+            { "breed": "ovcharka", "subBreeds": ["caucasian"] },
+            { "breed": "papillon", "subBreeds": [] },
+            { "breed": "pariah", "subBreeds": ["indian"] },
+            { "breed": "pekinese", "subBreeds": [] },
+            { "breed": "pembroke", "subBreeds": [] },
+            { "breed": "pinscher", "subBreeds": ["miniature"] },
+            { "breed": "pitbull", "subBreeds": [] },
+            { "breed": "pointer", "subBreeds": ["german", "germanlonghair"] },
+            { "breed": "pomeranian", "subBreeds": [] },
+            { "breed": "poodle", "subBreeds": ["medium", "miniature", "standard", "toy"] },
+            { "breed": "pug", "subBreeds": [] },
+            { "breed": "puggle", "subBreeds": [] },
+            { "breed": "pyrenees", "subBreeds": [] },
+            { "breed": "rajapalayam", "subBreeds": ["indian"] },
+            { "breed": "redbone", "subBreeds": [] },
+            { "breed": "retriever", "subBreeds": ["chesapeake", "curly", "flatcoated", "golden"] },
+            { "breed": "ridgeback", "subBreeds": ["rhodesian"] },
+            { "breed": "rottweiler", "subBreeds": [] },
+            { "breed": "saluki", "subBreeds": [] },
+            { "breed": "samoyed", "subBreeds": [] },
+            { "breed": "schipperke", "subBreeds": [] },
+            { "breed": "schnauzer", "subBreeds": ["giant", "miniature"] },
+            { "breed": "segugio", "subBreeds": ["italian"] },
+            { "breed": "setter", "subBreeds": ["english", "gordon", "irish"] },
+            { "breed": "sharpei", "subBreeds": [] },
+            { "breed": "sheepdog", "subBreeds": ["english", "indian", "shetland"] },
+            { "breed": "shiba", "subBreeds": [] },
+            { "breed": "shihtzu", "subBreeds": [] },
+            { "breed": "spaniel", "subBreeds": ["blenheim", "brittany", "cocker", "irish", "japanese", "sussex", "welsh"] },
+            { "breed": "spitz", "subBreeds": ["indian", "japanese"] },
+            { "breed": "springer", "subBreeds": ["english"] },
+            { "breed": "stbernard", "subBreeds": [] },
+            { "breed": "terrier", "subBreeds": ["american", "australian", "bedlington", "border", "cairn", "dandie", "fox", "irish", "kerryblue", "lakeland", "norfolk", "norwich", "patterdale", "russell", "scottish", "sealyham", "silky", "tibetan", "toy", "welsh", "westhighland", "wheaten", "yorkshire"] },
+            { "breed": "tervuren", "subBreeds": [] },
+            { "breed": "vizsla", "subBreeds": [] },
+            { "breed": "waterdog", "subBreeds": ["spanish"] },
+            { "breed": "weimaraner", "subBreeds": [] },
+            { "breed": "whippet", "subBreeds": [] },
+            { "breed": "wolfhound", "subBreeds": ["irish"] }
+          ]
+    };
+  
+    const datalist = document.getElementById("breedList");
+    breedData.breeds.forEach(b => {
+        if(b.subBreeds.length > 0){
+            b.subBreeds.forEach(sub => {
+                const option = document.createElement("option");
+                option.value = `${sub} ${b.breed}`;
+                datalist.appendChild(option);
+            });
+        } else{
+            const option = document.createElement("option");
+            option.value = b.breed;
+            datalist.appendChild(option);
+        }
+    });
+
+    document.getElementById("searchBtn").addEventListener("click", () => {
+        const input = document.getElementById("breedInput").value.trim().toLowerCase();
+        const resultDiv = document.querySelector(".result")
+
+        let url = "";
+
+        const parts = input.split(" ");
+        if(parts.length === 2){
+            const [sub, breed] = parts;
+            url = `https://dog.ceo/api/breed/${breed}/${sub}/images/random`
+        } else if(parts.length === 1){
+            url = `https://dog.ceo/api/breed/${parts[0]}/images/random`
+        }else{
+            resultDiv.innerHTML = "Neteisingas formatas";
+            return;
+        }
+
+        fetch(url)
+        .then(resp => resp.json())
+        .then(data => {
+            if(data.status === "success"){
+                resultDiv.innerHTML = `<img src="${data.message}" alt="dog" style="max-width:300px">`;
+            }else{
+                resultDiv.innerHTML = "Veislė nerasta";
+            }
+        })
+        .catch(err => {
+            resultDiv.innerHTML = "Klaida gaunant nuotrauka";
+        });
+    });
+
+    </script>
+</body>
+</html>
