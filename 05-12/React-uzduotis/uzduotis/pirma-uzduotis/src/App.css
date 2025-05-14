@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  margin-top: 0px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;  
+}
+
+.intro {
+  margin-left: 210px;
+}
+
+.Cards {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+    margin: 30px;
+}
+
+.card {
+  background-color: rgb(246 246 247);
+  width: 500px;
+  margin: 5px;
+  padding: 15px;
+}
+
+button {
+  background-color: rgb(246 246 247);
+  margin: 5px;
+}
+
+input {
+  width: 250px;
+  padding: 6px;
+  margin-left: 15px;
+  height: 40px;
+}
+
+a {
+  padding: 10px;
+  color: black;
+  font-weight: 400;
+}
+
+.Vite{
+  color: RGB(91 175 255);
+  color: linear-gradient(88deg, rgba(91, 175, 255, 1) 10%, rgba(138, 116, 254, 1) 45%, rgba(189, 52, 254, 1) 100%);
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo1 {
+  margin-right: 500px;
+  margin-top: 50px;
+}
+
+.logo img {
+  margin-top: 5px;
+}
+
+
+
+
